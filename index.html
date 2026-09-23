@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP SCHOOL GUIDE - Coming Soon</title>
+    <style>
+        /* Modern CSS Reset & Fonts */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Card Container */
+        .container {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            padding: 40px 30px;
+            max-width: 650px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        /* Badge Styling */
+        .badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid #60a5fa;
+            color: #93c5fd;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Heading */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, #93c5fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        /* Subtitle */
+        p.subtitle {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Highlight Text */
+        .highlight {
+            color: #fbbf24;
+            font-weight: 600;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            margin: 25px auto;
+        }
+
+        /* Countdown Box Grid */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 14px;
+            min-width: 85px;
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.05);
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .time-box label {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 20px;
+        }
+
+        /* Simple Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 30px 20px;
+            }
+            .time-box {
+                min-width: 70px;
+                padding: 10px;
+            }
+            .time-box span {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <span class="badge">🎓 Coming Soon</span>
+        <h1>MP SCHOOL GUIDE</h1>
+        
+        <div class="divider"></div>
+
+        <p class="subtitle">
+            मध्य प्रदेश के छात्रों और शिक्षकों के लिए एक नया और डिजिटल मंच!<br>
+            हमारी वेबसाइट <span class="highlight">बहुत जल्द उपलब्ध होगी।</span>
+        </p>
+
+        <!-- Dummy Timer Display -->
+        <div class="countdown">
+            <div class="time-box">
+                <span>05</span>
+                <label>दिन</label>
+            </div>
+            <div class="time-box">
+                <span>12</span>
+                <label>घंटे</label>
+            </div>
+            <div class="time-box">
+                <span>45</span>
+                <label>मिनट</label>
+            </div>
+            <div class="time-box">
+                <span>30</span>
+                <label>सेकंड</label>
+            </div>
+        </div>
+
+        <p class="footer-note">अद्यतन और नवीनतम शैक्षणिक जानकारी के लिए बने रहें।</p>
+    </div>
+
+</body>
+</html>
