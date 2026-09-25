@@ -1,22 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-    <div id="Header-container"></div>
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mp school guide website is coming soon</title>
 </head>
 <body>
+    {% include header.html %}
     <h1>Welcome to mp school guide </h1>
     <p>mp school guide website is coming very sortly.</p>
-    <script>
-          fetch('Header.html')
-              .then(response => response.text())
-                  .then(data => {
-                        document.getElementById('Header-container').innerHTML = data;
-                            });
-                            </script>
-
+    
 </body>
 </html>
