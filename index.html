@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP SCHOOL GUIDE - Coming Soon</title>
+    <title>MP SCHOOL GUIDE </title>
     <style>
         /* Modern CSS Reset & Fonts */
         * {
@@ -17,11 +17,19 @@
             min-height: 100vh;
             background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #312e81 100%);
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             color: #ffffff;
             padding: 20px;
             overflow-x: hidden;
+        }
+
+        /* Container for Dynamic Header */
+        #header-container {
+            width: 100%;
+            max-width: 650px;
+            margin-bottom: 20px;
         }
 
         /* Glassmorphism Card Container */
@@ -157,10 +165,12 @@
     </style>
 </head>
 <body>
-    <div id="Header-container"></div>
+
+    <!-- Header Auto-Load Container -->
+    <div id="header-container"></div>
 
     <div class="container">
-        <span class="badge">🎓 Coming Soon</span>
+        <span class="badge">🎓 </span>
         <h1>MP SCHOOL GUIDE</h1>
         
         <div class="divider"></div>
@@ -193,13 +203,22 @@
         <p class="footer-note">अद्यतन और नवीनतम शैक्षणिक जानकारी के लिए बने रहें।</p>
     </div>
 
-</body>
+    <!-- Script to Load header.html Safely -->
     <script>
-  fetch(Header.html')
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById('Header-container').innerHTML = data;
-    });
-</script>
+        fetch('header.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('header.html फ़ाइल नहीं मिली (Status: ' + response.status + ')');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Header Load Error:', error);
+            });
+    </script>
 
+</body>
 </html>
