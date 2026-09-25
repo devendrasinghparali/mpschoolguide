@@ -157,7 +157,7 @@
     </style>
 </head>
 <body>
-    <div id="header-container"></div>
+    <div id="Header-container"></div>
 
     <div class="container">
         <span class="badge">🎓 Coming Soon</span>
@@ -194,4 +194,12 @@
     </div>
 
 </body>
+    <script>
+  fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('header-container').innerHTML = data;
+    });
+</script>
+
 </html>
