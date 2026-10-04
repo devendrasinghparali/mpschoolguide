@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मध्य प्रदेश जिला पहचान गेम - असली नक्शा</title>
+    <!-- D3.js Library for Real Cartographic Mapping -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        h1 {
+            color: #fbbf24;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .score-board {
+            display: flex;
+            gap: 20px;
+            font-size: 15px;
+            font-weight: bold;
+            background: #1e293b;
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 12px;
+            border: 1px solid #334155;
+        }
+
+        .score-board span {
+            color: #38bdf8;
+        }
+
+        .instructions {
+            background: #1e3a8a;
+            border-left: 4px solid #38bdf8;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            font-size: 14px;
+            border-radius: 6px;
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .game-container {
+            display: flex;
+            width: 100%;
+            max-width: 1300px;
+            gap: 15px;
+            justify-content: center;
+            align-items: stretch;
+            height: calc(100vh - 180px);
+            min-height: 500px;
+        }
+
+        .district-panel {
+            flex: 1;
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 12px;
+            overflow-y: auto;
+            border: 1px solid #334155;
+        }
+
+        .district-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .district-btn {
+            background-color: #334155;
+            color: #f1f5f9;
+            border: 1px solid #475569;
+            padding: 8px 4px;
+            font-size: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .district-btn:hover {
+            background-color: #fbbf24;
+            color: #0f172a;
+            font-weight: bold;
+        }
+
+        .district-btn.correct {
+            background-color: #22c55e !important;
+            color: white !important;
+            cursor: default;
+        }
+
+        .district-btn.wrong-flash {
+            background-color: #ef4444 !important;
+            color: white !important;
+        }
+
+        .map-panel {
+            flex: 2;
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid #334155;
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+            max-height: 550px;
+        }
+
+        /* D3 Map Paths */
+        .district {
+            fill: #ffffff;
+            stroke: #000000;
+            stroke-width: 0.8;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .district:hover {
+            fill: #f59e0b;
+            stroke-width: 1.5;
+        }
+
+        .district.selected {
+            fill: #38bdf8 !important;
+            stroke: #ffffff !important;
+            stroke-width: 2 !important;
+        }
+
+        .district.completed {
+            fill: #22c55e !important;
+            stroke: #0f172a !important;
+            stroke-width: 0.5 !important;
+            cursor: default;
+        }
+
+        .loading {
+            position: absolute;
+            color: #fbbf24;
+            font-size: 18px;
+        }
+
+        @media (max-width: 1024px) {
+            .game-container { flex-direction: column; height: auto; }
+            .map-panel { min-height: 350px; order: -1; }
+            .district-panel { max-height: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>मध्य प्रदेश जिला पहचान गेम (असली नक्शा)</h1>
+
+    <div class="score-board">
+        <div>कुल जिले: <span id="total-count">0</span></div>
+        <div>सही उत्तर: <span id="score">0</span></div>
+        <div>प्रयास: <span id="attempts">0</span></div>
+    </div>
+
+    <div class="instructions" id="instruction-text">
+        👉 <strong>चरण 1:</strong> नक्शे (Map) में किसी भी जिले पर क्लिक करें!
+    </div>
+
+    <div class="game-container">
+        <div class="district-panel">
+            <div class="district-grid" id="left-list"></div>
+        </div>
+
+        <div class="map-panel">
+            <div class="loading" id="loading">असली नक्शा लोड हो रहा है... ⏳</div>
+            <svg id="mp-map"></svg>
+        </div>
+
+        <div class="district-panel">
+            <div class="district-grid" id="right-list"></div>
+        </div>
+    </div>
+
+    <script>
+        let selectedDistrictName = null;
+        let selectedElement = null;
+        let score = 0;
+        let attempts = 0;
+        let completed = 0;
+        let districtsData = [];
+
+        // GitHub CDN से असली MP GeoJSON फ़ाइल लोड करना
+        const geojsonUrl = "https://raw.githubusercontent.com/hindstan/Indian-States-And-Districts-GeoJSON/master/States/MadhyaPradesh.geojson";
+
+        async function loadMap() {
+            try {
+                const response = await fetch(geojsonUrl);
+                const data = await response.json();
+                document.getElementById('loading').style.display = 'none';
+
+                districtsData = data.features;
+                document.getElementById('total-count').innerText = districtsData.length;
+
+                renderLists();
+                renderMap(data);
+            } catch (err) {
+                document.getElementById('loading').innerText = "नक्शा लोड करने में समस्या आई। इंटरनेट कनेक्शन जांचें।";
+            }
+        }
+
+        function renderMap(geoData) {
+            const svg = d3.select("#mp-map");
+            const width = document.querySelector('.map-panel').clientWidth;
+            const height = document.querySelector('.map-panel').clientHeight || 500;
+
+            // D3 Projection
+            const projection = d3.geoMercator().fitSize([width, height], geoData);
+            const pathGenerator = d3.geoPath().projection(projection);
+
+            svg.selectAll("path")
+                .data(geoData.features)
+                .enter()
+                .append("path")
+                .attr("d", pathGenerator)
+                .attr("class", "district")
+                .attr("id", d => "dist-" + sanitizeId(getDistrictName(d)))
+                .on("click", function (event, d) {
+                    if (this.classList.contains("completed")) return;
+
+                    d3.selectAll(".district").classed("selected", false);
+                    d3.select(this).classed("selected", true);
+
+                    selectedDistrictName = getDistrictName(d);
+                    selectedElement = this;
+
+                    document.getElementById('instruction-text').innerHTML = 
+                        `👉 <strong>चरण 2:</strong> सूची में से इस जिले का सही नाम चुनें!`;
+                });
+        }
+
+        function getDistrictName(feature) {
+            return feature.properties.district || feature.properties.dtname || feature.properties.NAME_2 || "Unknown";
+        }
+
+        function sanitizeId(name) {
+            return name.replace(/[^a-zA-Z0-0]/g, "");
+        }
+
+        function renderLists() {
+            const names = districtsData.map(d => getDistrictName(d)).sort(() => Math.random() - 0.5);
+            const left = document.getElementById('left-list');
+            const right = document.getElementById('right-list');
+            
+            const half = Math.ceil(names.length / 2);
+            names.slice(0, half).forEach(name => left.appendChild(createBtn(name)));
+            names.slice(half).forEach(name => right.appendChild(createBtn(name)));
+        }
+
+        function createBtn(name) {
+            const btn = document.createElement('button');
+            btn.className = 'district-btn';
+            btn.id = "btn-" + sanitizeId(name);
+            btn.innerText = name;
+            btn.onclick = () => checkAnswer(name, btn);
+            return btn;
+        }
+
+        function checkAnswer(clickedName, btn) {
+            if (!selectedDistrictName) {
+                alert("कृपया पहले नक्शे में किसी जिले पर क्लिक करें!");
+                return;
+            }
+
+            attempts++;
+            document.getElementById('attempts').innerText = attempts;
+
+            if (clickedName.toLowerCase() === selectedDistrictName.toLowerCase()) {
+                score++;
+                completed++;
+                document.getElementById('score').innerText = score;
+
+                d3.select(selectedElement).classed("selected", false).classed("completed", true);
+                btn.classList.add('correct');
+                btn.disabled = true;
+
+                selectedDistrictName = null;
+                selectedElement = null;
+
+                if (completed === districtsData.length) {
+                    document.getElementById('instruction-text').innerHTML = "🎉 <strong>बधाई हो!</strong> आपने सभी जिलों को पहचान लिया है!";
+                } else {
+                    document.getElementById('instruction-text').innerHTML = "✅ <strong>सही उत्तर!</strong> अब अगले ज़िले पर क्लिक करें।";
+                }
+            } else {
+                btn.classList.add('wrong-flash');
+                setTimeout(() => btn.classList.remove('wrong-flash'), 600);
+                document.getElementById('instruction-text').innerHTML = "❌ <strong>गलत उत्तर!</strong> दोबारा प्रयास करें।";
+            }
+        }
+
+        window.onload = loadMap;
+    </script>
+</body>
+</html>
