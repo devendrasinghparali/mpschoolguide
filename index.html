@@ -1,189 +1,68 @@
+---
+layout: null
+title: MP School Guide
+---
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>मध्य प्रदेश जिला एवं संभाग पहचान गेम</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #0f172a; color: #f8fafc; padding: 15px; display: flex; flex-direction: column; align-items: center; }
-        h1 { color: #fbbf24; font-size: 24px; margin-bottom: 10px; text-align: center; }
-        
-        .score-board {
-            display: flex; gap: 20px; font-size: 15px; font-weight: bold;
-            background: #1e293b; padding: 10px 25px; border-radius: 30px; margin-bottom: 12px; border: 1px solid #334155;
-        }
-        .score-board span { color: #38bdf8; }
-
-        .instructions {
-            background: #1e3a8a; border-left: 4px solid #38bdf8; padding: 10px 15px;
-            margin-bottom: 15px; font-size: 14px; border-radius: 6px; width: 100%; max-width: 1000px; text-align: center;
-        }
-
-        .game-layout {
-            display: flex; gap: 15px; width: 100%; max-width: 1100px; flex-wrap: wrap; justify-content: center;
-        }
-
-        .panel {
-            flex: 1; min-width: 280px; max-height: 480px; background: #1e293b;
-            padding: 12px; border-radius: 12px; border: 1px solid #334155; overflow-y: auto;
-        }
-
-        .grid-buttons { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-
-        .btn {
-            background-color: #334155; color: #f1f5f9; border: 1px solid #475569;
-            padding: 10px 6px; font-size: 13px; border-radius: 6px; cursor: pointer; text-align: center; transition: 0.2s;
-        }
-        .btn:hover { background-color: #fbbf24; color: #0f172a; font-weight: bold; }
-        .btn.correct { background-color: #22c55e !important; color: white !important; cursor: default; }
-        .btn.wrong { background-color: #ef4444 !important; color: white !important; }
-
-        .map-box {
-            flex: 1.5; min-width: 320px; background: #0f172a; padding: 15px; border-radius: 12px;
-            border: 1px solid #334155; display: flex; align-items: center; justify-content: center;
-        }
-
-        svg { width: 100%; height: auto; max-height: 450px; }
-
-        /* Map Styling */
-        .district { fill: #475569; stroke: #0f172a; stroke-width: 1.5; cursor: pointer; transition: 0.2s; }
-        .district:hover { fill: #fbbf24; }
-        .district.selected { fill: #38bdf8 !important; stroke: #ffffff !important; stroke-width: 2.5 !important; }
-        .district.completed { fill: #22c55e !important; stroke: #0f172a !important; cursor: default; }
-
-        .reset-btn {
-            background-color: #ef4444; color: white; border: none; padding: 10px 24px;
-            font-size: 15px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-top: 15px;
-        }
-    </style>
+    <title>MP School Guide</title>
 </head>
-<body>
+<body class="bg-slate-50">
 
-    <h1>मध्य प्रदेश जिला एवं संभाग पहचान गेम 🗺️</h1>
+    {% include header.html %}
 
-    <div class="score-board">
-        <div>कुल जिले: <span id="total-count">0</span></div>
-        <div>सही: <span id="score">0</span></div>
-        <div>प्रयास: <span id="attempts">0</span></div>
+    <!-- यहाँ आपका मुख्य कंटेंट आएगा -->
+          <!-- सूचना बॉक्स कंटेनर -->
+<div style="display: block; margin: 30px auto; max-width: 100%; width: 550px; background-color: #ffffff; border: 2px solid #ff6600; border-radius: 12px; padding: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); font-family: sans-serif; position: relative; overflow: hidden; box-sizing: border-box; clear: both;">
+    
+    <!-- वाटरमार्क बैकग्राउंड इमेज -->
+    <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 280px; height: 280px; opacity: 0.3; filter: blur(2px); z-index: 1; pointer-events: none;">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
 
-    <div class="instructions" id="instruction-text">
-        👉 <strong>चरण 1:</strong> नक्शे (Map) में किसी भी जिले पर क्लिक करें!
-    </div>
-
-    <div class="game-layout">
-        <div class="panel">
-            <div class="grid-buttons" id="name-list"></div>
+    <!-- मुख्य कंटेंट लेयर -->
+    <div style="position: relative; z-index: 2; width: 100%;">
+        
+        <!-- हेडर तालिका: दोनों तरफ लोगो और बीच में सूचना / अपडेट -->
+        <table style="width: 100%; border-bottom: 3px solid #ff6600; padding-bottom: 8px; margin-bottom: 15px; border-collapse: collapse;">
+            <tr>
+                <!-- बायाँ लोगो -->
+                <td style="text-align: left; padding: 0; margin: 0; vertical-align: middle; width: 60px;">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png" alt="Logo Left" style="height: 45px; width: auto; display: inline-block; object-fit: contain;">
+                </td>
+                
+                <!-- बीच में मुख्य हेडिंग -->
+                <td style="text-align: center; font-size: 22px; color: #333; font-weight: bold; padding: 0; margin: 0; vertical-align: middle;">
+                    सूचना / <span style="color: #ff6600;">अपडेट</span>
+                </td>
+                
+                <!-- दायाँ लोगो -->
+                <td style="text-align: right; padding: 0; margin: 0; vertical-align: middle; width: 60px;">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png" alt="Logo Right" style="height: 45px; width: auto; display: inline-block; object-fit: contain;">
+                </td>
+            </tr>
+        </table>
+        
+        <!-- मुख्य टेक्स्ट भाग -->
+        <div style="color: #dd6b20; font-weight: bold; font-size: 17px; margin-top: 20px; margin-bottom: 12px; text-align: center;">
+            🚨 4 हजार शिक्षकों ने भरा TET का फार्म
+        </div>
+ <div style="font-size: 15px; line-height: 1.6; color: #2d3748; text-align: justify; margin-bottom: 15px;">
+           
+         <strong> TET आवेदन की अंतिम तिथि अब 11 अक्टूबर तक बढ़ा दी गई है। 21 अगस्त से शुरू हुई आवेदन प्रक्रिया में अब तक करीब 22 हजार आवेदन जमा हुए हैं, जिनमें लगभग 4 हजार सरकारी शिक्षक हैं। कम आवेदनों के चलते तिथि बढ़ाने का फैसला लिया गया।
+   </strong>
         </div>
 
-        <div class="map-box">
-            <svg viewBox="0 0 700 500" id="mp-svg">
-                <!-- SVG Shapes for MP Districts (Interactive Paths) -->
-                <g id="districts-group">
-                    <path class="district" id="dist-mandsaur" data-name="मंदसौर" d="M110,130 L150,120 L160,160 L120,170 Z" />
-                    <path class="district" id="dist-neemuch" data-name="नीमच" d="M90,90 L130,80 L140,125 L100,120 Z" />
-                    <path class="district" id="dist-ratlam" data-name="रतलाम" d="M115,175 L165,165 L170,210 L125,215 Z" />
-                    <path class="district" id="dist-ujjain" data-name="उज्जैन" d="M175,170 L225,165 L230,215 L180,220 Z" />
-                    <path class="district" id="dist-indore" data-name="इंदौर" d="M175,225 L225,220 L220,265 L170,260 Z" />
-                    <path class="district" id="dist-dhar" data-name="धार" d="M120,220 L170,215 L165,270 L115,265 Z" />
-                    <path class="district" id="dist-bhopal" data-name="भोपाल" d="M280,190 L330,185 L335,230 L285,235 Z" />
-                    <path class="district" id="dist-gwalior" data-name="ग्वालियर" d="M260,50 L300,45 L305,85 L265,90 Z" />
-                    <path class="district" id="dist-jabalpur" data-name="जबलपुर" d="M410,230 L460,225 L465,275 L415,280 Z" />
-                    <path class="district" id="dist-rewa" data-name="रीवा" d="M530,140 L580,135 L585,180 L535,185 Z" />
-                </g>
-            </svg>
+        <!-- फुटर -->
+        <div style="margin-top: 20px; border-top: 2px dashed #ff6600; padding-top: 10px; text-align: center; font-size: 14px; color: #4a5568; font-weight: bold;">
+           ✨ उपयोगी सूचना को साथियों के साथ शेयर करे ✨
         </div>
+
     </div>
+</div>
 
-    <button class="reset-btn" onclick="initGame()">गेम रीसेट करें 🔄</button>
-
-    <script>
-        const districtData = ["मंदसौर", "नीमच", "रतलाम", "उज्जैन", "इंदौर", "धार", "भोपाल", "ग्वालियर", "जबलपुर", "रीवा"];
-
-        let selectedDistrictName = null;
-        let selectedElement = null;
-        let score = 0;
-        let attempts = 0;
-        let completed = 0;
-
-        function initGame() {
-            score = 0; attempts = 0; completed = 0;
-            selectedDistrictName = null; selectedElement = null;
-
-            document.getElementById('score').innerText = score;
-            document.getElementById('attempts').innerText = attempts;
-            document.getElementById('total-count').innerText = districtData.length;
-            document.getElementById('instruction-text').innerHTML = "👉 <strong>चरण 1:</strong> नक्शे में किसी भी जिले पर क्लिक करें!";
-
-            document.querySelectorAll('.district').forEach(el => el.classList.remove('selected', 'completed'));
-            renderButtons();
-        }
-
-        function renderButtons() {
-            const listContainer = document.getElementById('name-list');
-            listContainer.innerHTML = '';
-
-            const shuffled = [...districtData].sort(() => Math.random() - 0.5);
-            shuffled.forEach(name => {
-                const btn = document.createElement('button');
-                btn.className = 'btn';
-                btn.innerText = name;
-                btn.onclick = () => checkAnswer(name, btn);
-                listContainer.appendChild(btn);
-            });
-        }
-
-        // नक्शे पर क्लिक हैंडलर
-        document.querySelectorAll('.district').forEach(item => {
-            item.addEventListener('click', function() {
-                if (this.classList.contains('completed')) return;
-
-                document.querySelectorAll('.district').forEach(el => el.classList.remove('selected'));
-                this.classList.add('selected');
-
-                selectedDistrictName = this.getAttribute('data-name');
-                selectedElement = this;
-
-                document.getElementById('instruction-text').innerHTML = 
-                    `👉 <strong>चरण 2:</strong> सूची में से सही नाम चुनें!`;
-            });
-        });
-
-        // उत्तर जांचें
-        function checkAnswer(clickedName, btn) {
-            if (!selectedDistrictName) {
-                alert("कृपया पहले नक्शे में किसी जिले पर क्लिक करें!");
-                return;
-            }
-
-            attempts++;
-            document.getElementById('attempts').innerText = attempts;
-
-            if (clickedName === selectedDistrictName) {
-                score++; completed++;
-                document.getElementById('score').innerText = score;
-
-                selectedElement.classList.remove('selected');
-                selectedElement.classList.add('completed');
-                btn.classList.add('correct');
-                btn.disabled = true;
-
-                selectedDistrictName = null; selectedElement = null;
-
-                if (completed === districtData.length) {
-                    document.getElementById('instruction-text').innerHTML = "🎉 <strong>शानदार!</strong> आपने सभी जिलों को पहचान लिया!";
-                } else {
-                    document.getElementById('instruction-text').innerHTML = "✅ <strong>सही उत्तर!</strong> अब अगला जिला चुनें।";
-                }
-            } else {
-                btn.classList.add('wrong');
-                setTimeout(() => btn.classList.remove('wrong'), 600);
-                document.getElementById('instruction-text').innerHTML = "❌ <strong>गलत उत्तर!</strong> दोबारा प्रयास करें।";
-            }
-        }
-
-        window.onload = initGame;
-    </script>
 </body>
 </html>
