@@ -1,8 +1,3 @@
----
-layout: null
-title: MP School Guide
----
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -10,55 +5,119 @@ title: MP School Guide
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP School Guide</title>
 </head>
+
 <body class="bg-slate-50">
 
-    {% include header.html %}
+{% include header.html %}
 
-    <!-- यहाँ आपका मुख्य कंटेंट आएगा -->
-          <!-- सूचना बॉक्स कंटेनर -->
-<div style="display: block; margin: 30px auto; max-width: 100%; width: 550px; background-color: #ffffff; border: 2px solid #ff6600; border-radius: 12px; padding: 10px; box-shadow: 0 6px 12px rgba(0,0,0,0.15); font-family: sans-serif; position: relative; overflow: hidden; box-sizing: border-box; clear: both;">
-    
-    <!-- वाटरमार्क बैकग्राउंड इमेज -->
-    <div style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 280px; height: 280px; opacity: 0.3; filter: blur(2px); z-index: 1; pointer-events: none;">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png" style="width: 100%; height: 100%; object-fit: contain;">
+<!-- सूचना बॉक्स कंटेनर -->
+<div style="
+    display: block;
+    margin: 30px 15px;
+    max-width: 550px;
+    width: calc(100% - 30px);
+    background-color: #ffffff;
+    border: 2px solid #ff6600;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    font-family: sans-serif;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    clear: both;
+">
+
+    <!-- वाटरमार्क बैकग्राउंड -->
+    <div style="
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 280px;
+        height: 280px;
+        opacity: 0.15;
+        filter: blur(2px);
+        z-index: 1;
+        pointer-events: none;
+    ">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+        style="width:100%; height:100%; object-fit:contain;">
     </div>
 
-    <!-- मुख्य कंटेंट लेयर -->
-    <div style="position: relative; z-index: 2; width: 100%;">
-        
-        <!-- हेडर तालिका: दोनों तरफ लोगो और बीच में सूचना / अपडेट -->
-        <table style="width: 100%; border-bottom: 3px solid #ff6600; padding-bottom: 8px; margin-bottom: 15px; border-collapse: collapse;">
+    <!-- मुख्य कंटेंट -->
+    <div style="position:relative; z-index:2; width:100%;">
+
+        <!-- हेडर -->
+        <table style="
+            width:100%;
+            border-bottom:3px solid #ff6600;
+            padding-bottom:8px;
+            margin-bottom:15px;
+            border-collapse:collapse;
+        ">
             <tr>
-                <!-- बायाँ लोगो -->
-                <td style="text-align: left; padding: 0; margin: 0; vertical-align: middle; width: 60px;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png" alt="Logo Left" style="height: 45px; width: auto; display: inline-block; object-fit: contain;">
+
+                <td style="text-align:left; vertical-align:middle; width:60px;">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+                    style="height:45px; width:auto; object-fit:contain;">
                 </td>
-                
-                <!-- बीच में मुख्य हेडिंग -->
-                <td style="text-align: center; font-size: 22px; color: #333; font-weight: bold; padding: 0; margin: 0; vertical-align: middle;">
-                    सूचना / <span style="color: #ff6600;">अपडेट</span>
+
+                <td style="
+                    text-align:center;
+                    font-size:22px;
+                    color:#333;
+                    font-weight:bold;
+                    vertical-align:middle;
+                ">
+                    सूचना / <span style="color:#ff6600;">अपडेट</span>
                 </td>
-                
-                <!-- दायाँ लोगो -->
-                <td style="text-align: right; padding: 0; margin: 0; vertical-align: middle; width: 60px;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png" alt="Logo Right" style="height: 45px; width: auto; display: inline-block; object-fit: contain;">
+
+                <td style="text-align:right; vertical-align:middle; width:60px;">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+                    style="height:45px; width:auto; object-fit:contain;">
                 </td>
+
             </tr>
         </table>
-        
-        <!-- मुख्य टेक्स्ट भाग -->
-        <div style="color: #dd6b20; font-weight: bold; font-size: 17px; margin-top: 20px; margin-bottom: 12px; text-align: center;">
-            🚨 4 हजार शिक्षकों ने भरा TET का फार्म
+
+        <!-- सूचना शीर्षक -->
+        <div style="
+            color:#dd6b20;
+            font-weight:bold;
+            font-size:17px;
+            margin-top:20px;
+            margin-bottom:12px;
+            text-align:center;
+        ">
+            📢 ई-सर्विस बुक में त्रुटि सुधार की सुविधा प्रारंभ
         </div>
- <div style="font-size: 15px; line-height: 1.6; color: #2d3748; text-align: justify; margin-bottom: 15px;">
-           
-         <strong> TET आवेदन की अंतिम तिथि अब 11 अक्टूबर तक बढ़ा दी गई है। 21 अगस्त से शुरू हुई आवेदन प्रक्रिया में अब तक करीब 22 हजार आवेदन जमा हुए हैं, जिनमें लगभग 4 हजार सरकारी शिक्षक हैं। कम आवेदनों के चलते तिथि बढ़ाने का फैसला लिया गया।
-   </strong>
+
+        <!-- सूचना विवरण -->
+        <div style="
+            font-size:15px;
+            line-height:1.7;
+            color:#2d3748;
+            text-align:justify;
+            margin-bottom:15px;
+        ">
+            <strong>
+                एजुकेशन पोर्टल 3.0 पर अब Employee Login के माध्यम से कर्मचारी अपनी E-Service Book में दर्ज त्रुटियों का स्वयं सुधार कर सकते हैं।
+                अतः सभी कर्मचारी अपनी ई-सर्विस बुक की जाँच कर आवश्यक त्रुटियों का सुधार सुनिश्चित करें।
+            </strong>
         </div>
 
         <!-- फुटर -->
-        <div style="margin-top: 20px; border-top: 2px dashed #ff6600; padding-top: 10px; text-align: center; font-size: 14px; color: #4a5568; font-weight: bold;">
-           ✨ उपयोगी सूचना को साथियों के साथ शेयर करे ✨
+        <div style="
+            margin-top:20px;
+            border-top:2px dashed #ff6600;
+            padding-top:10px;
+            text-align:center;
+            font-size:14px;
+            color:#4a5568;
+            font-weight:bold;
+        ">
+            ✨ उपयोगी सूचना को साथियों के साथ शेयर करें ✨
         </div>
 
     </div>
