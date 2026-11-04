@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>मध्यप्रदेश स्कूल अवकाश कैलेंडर 2026</title>
+<style>
+:root{--ink:#1f2937;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc}
+*{box-sizing:border-box}body{margin:0;padding:16px;background:var(--bg);color:var(--ink);font-family:Arial,"Noto Sans Devanagari",sans-serif}
+.wrap{max-width:1000px;margin:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 28px #0f172a0d}
+header{text-align:center;margin-bottom:16px}h1{font-size:clamp(21px,4vw,30px);margin:0 0 5px}.sub{font-size:14px;color:var(--muted)}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:18px 0}.toolbar button{border:0;background:#eaf1ff;color:#1e40af;padding:10px 14px;border-radius:9px;font-size:14px;cursor:pointer}.toolbar button:disabled{opacity:.4;cursor:not-allowed}
+#monthTitle{font-size:21px;font-weight:700;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.week{text-align:center;font-weight:700;color:#475569;padding:8px 1px;font-size:13px}
+.day{min-height:108px;border:1px solid var(--line);border-radius:9px;padding:6px 5px;background:#fff;overflow:hidden}.day.empty{background:#f8fafc;border-style:dashed}.date{font-size:16px;font-weight:700}.day.sunday .date{color:#dc2626}
+.holiday{display:block;margin-top:5px;padding:4px;border-radius:5px;font-size:10px;line-height:1.35;overflow-wrap:anywhere}
+.general{background:#fff0f1;color:#9f1239;border-left:3px solid #e11d48}
+.optional{background:#fff7ed;color:#9a3412;border-left:3px solid #f59e0b}
+.teacher{background:#ecfdf5;color:#166534;border-left:3px solid #16a34a}
+.kind{display:block;font-size:9px;font-weight:700;margin-top:2px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0;color:#475569;font-size:12px}.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+.details{margin-top:20px;border-top:1px solid var(--line);padding-top:15px}.details h2{font-size:18px;margin:0 0 12px}.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.group h3{font-size:15px;margin:0 0 8px}.event{display:flex;gap:9px;padding:8px 0;border-bottom:1px solid #f1f5f9;align-items:flex-start}.event-date{min-width:66px;font-weight:700;color:#1e40af;font-size:12px}.event-name{font-size:13px;font-weight:600}.event-type{font-size:11px;color:var(--muted);margin-top:3px}
+.note{font-size:11px;line-height:1.6;color:var(--muted);margin-top:14px}
+@media(max-width:700px){.columns{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){body{padding:7px}.wrap{padding:10px;border-radius:10px}.day{min-height:92px;padding:4px 3px}.date{font-size:14px}.holiday{font-size:9px;padding:3px}.kind{font-size:8px}.week{font-size:10px}.columns{grid-template-columns:1fr}.toolbar button{padding:8px 9px;font-size:12px}#monthTitle{font-size:18px}}
+@media print{body{padding:0;background:#fff}.wrap{border:0;box-shadow:none;max-width:none}.toolbar{display:none}.day{min-height:90px;break-inside:avoid}.details{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><h1>मध्यप्रदेश स्कूल अवकाश कैलेंडर</h1><div class="sub">नवंबर एवं दिसंबर 2026 • सामान्य, ऐच्छिक एवं शिक्षक अवकाश</div></header>
+<div class="toolbar"><button id="prev">← नवंबर</button><div id="monthTitle"></div><button id="next">दिसंबर →</button></div>
+<div class="calendar" id="calendar"></div>
+<div class="legend">
+<span><i class="dot" style="background:#fff0f1;border:1px solid #e11d48"></i>सामान्य अवकाश</span>
+<span><i class="dot" style="background:#fff7ed;border:1px solid #f59e0b"></i>ऐच्छिक अवकाश</span>
+<span><i class="dot" style="background:#ecfdf5;border:1px solid #16a34a"></i>शिक्षकों का अवकाश</span>
+<span><i class="dot" style="background:#fee2e2"></i>रविवार</span>
+</div>
+<section class="details"><h2>अवकाशों की सूची</h2><div class="columns">
+<div class="group"><h3 style="color:#9f1239">सामान्य अवकाश</h3><div id="generalList"></div></div>
+<div class="group"><h3 style="color:#9a3412">ऐच्छिक अवकाश</h3><div id="optionalList"></div></div>
+<div class="group"><h3 style="color:#166534">केवल शिक्षकों के अवकाश</h3><div id="teacherList"></div></div>
+</div>
+<p class="note">शिक्षक अवकाश की अवधि स्कूल शिक्षा विभाग के 24-03-2026 के आदेश के अनुसार दर्शाई गई है। दीपावली अवकाश: 06 से 10 नवंबर 2026; शीतकालीन अवकाश: 31 दिसंबर 2026 से 04 जनवरी 2027। इस कैलेंडर में केवल नवंबर-दिसंबर 2026 का भाग दिखाया गया है।</p>
+</section>
+</div>
+<script>
+const generalHolidays=[
+ {date:"2026-11-09",name:"गोवर्धन पूजा"},
+ {date:"2026-11-24",name:"गुरुनानक जयंती"},
+ {date:"2026-12-25",name:"क्रिसमस"}
+];
+const optionalHolidays=[
+ {date:"2026-11-07",name:"दीपावली (दक्षिण भारतीय)"},
+ {date:"2026-11-09",name:"दीपावली का दूसरा दिन"},
+ {date:"2026-11-11",name:"भाईदूज"},
+ {date:"2026-11-16",name:"भगवान सहस्रबाहु जयंती"},
+ {date:"2026-11-20",name:"नामदेव जयंती"},
+ {date:"2026-12-03",name:"विश्व विकलांग दिवस"},
+ {date:"2026-12-04",name:"क्रांतिसूर्य टंट्या भील बलिदान दिवस"},
+ {date:"2026-12-14",name:"गुरु तेगबहादुर का शहीदी दिवस"},
+ {date:"2026-12-16",name:"संत श्री जिनतरन तारण जयंती"},
+ {date:"2026-12-18",name:"गुरु घासीदास जयंती"},
+ {date:"2026-12-23",name:"दत्तात्रेय जयंती"},
+ {date:"2026-12-31",name:"बालीनाथ जी बैरवा जयंती"}
+];
+// स्कूल शिक्षा विभाग के आदेश में शिक्षकों के लिए घोषित अवकाश अवधि
+const teacherVacations=[
+ {start:"2026-11-06",end:"2026-11-10",name:"दीपावली अवकाश"},
+ {start:"2026-12-31",end:"2027-01-04",name:"शीतकालीन अवकाश"}
+];
+const months=["जनवरी","फरवरी","मार्च","अप्रैल","मई","जून","जुलाई","अगस्त","सितंबर","अक्टूबर","नवंबर","दिसंबर"];
+const weekdays=["रवि","सोम","मंगल","बुध","गुरु","शुक्र","शनि"];
+let month=10;const calendar=document.getElementById("calendar");
+function addEvent(el,h){const row=document.createElement("div");row.className="event";const dt=document.createElement("div");dt.className="event-date";const [y,m,d]=h.date.split("-");dt.textContent=Number(d)+" "+months[Number(m)-1];const name=document.createElement("div");name.className="event-name";name.textContent=h.name;row.append(dt,name);el.appendChild(row)}
+function inRange(key,start,end){return key>=start&&key<=end}
+function render(){
+ document.getElementById("monthTitle").textContent=months[month]+" 2026";calendar.innerHTML="";
+ weekdays.forEach(w=>{let e=document.createElement("div");e.className="week";e.textContent=w;calendar.appendChild(e)});
+ const first=new Date(2026,month,1).getDay(),total=new Date(2026,month+1,0).getDate();
+ for(let i=0;i<first;i++){let e=document.createElement("div");e.className="day empty";calendar.appendChild(e)}
+ for(let d=1;d<=total;d++){
+  const key=`2026-${String(month+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+  const dow=new Date(2026,month,d).getDay();let cell=document.createElement("div");cell.className="day"+(dow===0?" sunday":"");
+  let num=document.createElement("div");num.className="date";num.textContent=d;cell.appendChild(num);
+  generalHolidays.filter(x=>x.date===key).forEach(h=>{let b=document.createElement("span");b.className="holiday general";b.textContent=h.name;let k=document.createElement("span");k.className="kind";k.textContent="सामान्य अवकाश";b.appendChild(k);cell.appendChild(b)});
+  optionalHolidays.filter(x=>x.date===key).forEach(h=>{let b=document.createElement("span");b.className="holiday optional";b.textContent=h.name;let k=document.createElement("span");k.className="kind";k.textContent="ऐच्छिक अवकाश";b.appendChild(k);cell.appendChild(b)});
+  teacherVacations.filter(h=>inRange(key,h.start,h.end)).forEach(h=>{let b=document.createElement("span");b.className="holiday teacher";b.textContent=h.name;let k=document.createElement("span");k.className="kind";k.textContent="शिक्षक अवकाश";b.appendChild(k);cell.appendChild(b)});
+  calendar.appendChild(cell);
+ }
+ const gl=document.getElementById("generalList"),ol=document.getElementById("optionalList"),tl=document.getElementById("teacherList");gl.innerHTML="";ol.innerHTML="";tl.innerHTML="";
+ generalHolidays.filter(h=>Number(h.date.slice(5,7))===month+1).forEach(h=>addEvent(gl,h));
+ optionalHolidays.filter(h=>Number(h.date.slice(5,7))===month+1).forEach(h=>addEvent(ol,h));
+ teacherVacations.forEach(h=>{const startMonth=Number(h.start.slice(5,7)),endMonth=Number(h.end.slice(5,7));if(month+1>=startMonth&&month+1<=endMonth){const startDay=Number(h.start.slice(8,10)),endDay=Number(h.end.slice(8,10));const shownStart=month+1===startMonth?startDay:1;const shownEnd=month+1===endMonth?endDay:new Date(2026,month+1,0).getDate();const item={date:`2026-${String(month+1).padStart(2,"0")}-${String(shownStart).padStart(2,"0")}`,name:`${h.name} (${shownStart}–${shownEnd} ${months[month]})`};addEvent(tl,item)}});
+ document.getElementById("prev").disabled=month===10;document.getElementById("next").disabled=month===11;
+}
+document.getElementById("prev").onclick=()=>{if(month>10){month--;render()}};document.getElementById("next").onclick=()=>{if(month<11){month++;render()}};render();
+</script>
+</body></html>
