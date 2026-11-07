@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DA एरियर कैलकुलेटर | MP School Guide</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,"Noto Sans Devanagari",sans-serif;
+ background:#f1f5f9;
+ color:#1e293b;
+}
+.container{
+ max-width:1000px;
+ margin:20px auto;
+ padding:15px;
+}
+.header{
+ background:#17365d;
+ color:white;
+ padding:22px;
+ border-radius:12px;
+ text-align:center;
+}
+.header h2{margin:0 0 8px}
+.header p{margin:0;color:#dbeafe}
+.card{
+ background:white;
+ padding:18px;
+ border-radius:12px;
+ margin-top:16px;
+ box-shadow:0 2px 10px #0000000c;
+}
+h3{margin-top:0;color:#17365d}
+.form-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:14px;
+}
+label{
+ display:block;
+ font-weight:600;
+ margin-bottom:6px;
+ font-size:14px;
+}
+input{
+ width:100%;
+ padding:11px;
+ border:1px solid #cbd5e1;
+ border-radius:7px;
+ font-size:16px;
+}
+button{
+ border:0;
+ padding:12px 18px;
+ border-radius:7px;
+ cursor:pointer;
+ font-size:15px;
+ font-weight:600;
+}
+.primary{background:#17365d;color:white}
+.secondary{background:#e2e8f0;color:#1e293b}
+.actions{
+ display:flex;
+ flex-wrap:wrap;
+ gap:10px;
+ margin-top:16px;
+}
+.note{
+ background:#fff7ed;
+ border-left:4px solid #f59e0b;
+ padding:12px;
+ margin-top:15px;
+ font-size:14px;
+ line-height:1.7;
+}
+.summary{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
+}
+.summary-box{
+ background:#eff6ff;
+ padding:15px;
+ border-radius:9px;
+ text-align:center;
+}
+.summary-box small{display:block;color:#475569}
+.summary-box strong{
+ display:block;
+ font-size:21px;
+ color:#17365d;
+ margin-top:8px;
+}
+.table-wrap{overflow-x:auto}
+table{
+ width:100%;
+ border-collapse:collapse;
+ min-width:650px;
+}
+th,td{
+ padding:11px 9px;
+ border:1px solid #e2e8f0;
+ text-align:center;
+}
+th{background:#17365d;color:white}
+td input{
+ min-width:115px;
+ text-align:right;
+ padding:8px;
+}
+.total-row{
+ background:#eff6ff;
+ font-weight:bold;
+}
+.footer{
+ text-align:center;
+ color:#64748b;
+ font-size:13px;
+ padding:20px;
+}
+@media(max-width:600px){
+ .form-grid{grid-template-columns:1fr}
+ .summary{grid-template-columns:1fr}
+ .container{padding:10px}
+}
+@media print{
+ body{background:white}
+ .no-print{display:none!important}
+ .container{margin:0;padding:0}
+ .card{box-shadow:none}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="header">
+ <h2>DA एरियर कैलकुलेटर</h2>
+ <p>MP School Guide | मध्यप्रदेश कर्मचारी</p>
+</div>
+
+<div class="card no-print">
+ <h3>कर्मचारी की जानकारी एवं DA विवरण</h3>
+
+ <div class="form-grid">
+
+  <div>
+   <label>कर्मचारी का नाम (वैकल्पिक)</label>
+   <input id="empName" placeholder="नाम दर्ज करें">
+  </div>
+
+  <div>
+   <label>प्रारंभिक मूल वेतन (₹)</label>
+   <input id="basic" type="number" min="0" value="30000">
+  </div>
+
+  <div>
+   <label>पुरानी DA दर (%)</label>
+   <input id="oldDA" type="number" min="0" step="0.01" value="55">
+  </div>
+
+  <div>
+   <label>नई DA दर (%)</label>
+   <input id="newDA" type="number" min="0" step="0.01" value="58">
+  </div>
+
+  <div>
+   <label>एरियर प्रारंभ माह</label>
+   <input id="startMonth" type="month" value="2026-01">
+  </div>
+
+  <div>
+   <label>एरियर अंतिम माह</label>
+   <input id="endMonth" type="month" value="2026-12">
+  </div>
+
+ </div>
+
+ <div class="note">
+  <b>महत्वपूर्ण वेतन वृद्धि नियम:</b><br>
+  जुलाई माह में मूल वेतन में 3% की वृद्धि स्वतः होगी।
+  यह वृद्धि चयनित एरियर अवधि में आने वाले पहले जुलाई माह में
+  केवल एक बार लागू होगी। प्रत्येक माह का मूल वेतन आप स्वयं
+  एडिट भी कर सकते हैं।
+  <br><br>
+  <b>ध्यान दें:</b> प्रारंभिक मूल वेतन एरियर अवधि शुरू होने
+  से ठीक पहले का मूल वेतन दर्ज करें।
+ </div>
+
+ <div class="actions">
+  <button class="primary" onclick="generate()">कैलकुलेट करें</button>
+  <button class="secondary" onclick="resetAll()">रीसेट करें</button>
+ </div>
+</div>
+
+<div id="result" style="display:none">
+
+ <div class="card">
+  <h3>एरियर का सारांश</h3>
+  <div id="employeeInfo"></div>
+
+  <div class="summary">
+   <div class="summary-box">
+    <small>कुल DA एरियर</small>
+    <strong id="total">₹0</strong>
+   </div>
+
+   <div class="summary-box">
+    <small>DA में अंतर</small>
+    <strong id="difference">0%</strong>
+   </div>
+
+   <div class="summary-box">
+    <small>कुल महीने</small>
+    <strong id="months">0</strong>
+   </div>
+  </div>
+ </div>
+
+ <div class="card">
+  <h3>महीनेवार DA एरियर विवरण</h3>
+  <p style="font-size:13px;color:#64748b">
+   मूल वेतन वाले बॉक्स में राशि बदलकर उस महीने का वेतन एडिट करें।
+   आगे के महीने भी स्वतः पुनर्गणित होंगे।
+  </p>
+
+  <div class="table-wrap">
+   <table>
+    <thead>
+     <tr>
+      <th>माह</th>
+      <th>मूल वेतन (₹)</th>
+      <th>पुराना DA (₹)</th>
+      <th>नया DA (₹)</th>
+      <th>DA एरियर (₹)</th>
+     </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+    <tfoot>
+     <tr class="total-row">
+      <td colspan="4">कुल एरियर</td>
+      <td id="grandTotal">₹0</td>
+     </tr>
+    </tfoot>
+   </table>
+  </div>
+
+  <div class="actions no-print">
+   <button class="primary" onclick="window.print()">प्रिंट / PDF डाउनलोड</button>
+   <button class="secondary" onclick="downloadCSV()">Excel हेतु CSV डाउनलोड</button>
+  </div>
+ </div>
+
+</div>
+
+<div class="footer">
+ © MP School Guide | DA Arrear Calculator
+</div>
+
+</div>
+
+<script>
+let records = [];
+let overrides = {};
+
+const money = n => "₹" + Math.round(n).toLocaleString("en-IN");
+
+function generate(){
+
+ const basic = Number(document.getElementById("basic").value);
+ const oldDA = Number(document.getElementById("oldDA").value);
+ const newDA = Number(document.getElementById("newDA").value);
+ const start = document.getElementById("startMonth").value;
+ const end = document.getElementById("endMonth").value;
+
+ if(!basic || basic < 0 || !start || !end ||
+    oldDA < 0 || newDA < oldDA){
+  alert("कृपया सभी जानकारी सही दर्ज करें।");
+  return;
+ }
+
+ if(start > end){
+  alert("अंतिम माह, प्रारंभ माह से पहले नहीं हो सकता।");
+  return;
+ }
+
+ overrides = {};
+ records = [];
+
+ const [sy,sm] = start.split("-").map(Number);
+ const [ey,em] = end.split("-").map(Number);
+
+ let y=sy, m=sm;
+ let previousBasic=basic;
+ let julyApplied=false;
+
+ while(y<ey || (y===ey && m<=em)){
+
+  // जुलाई में केवल पहली बार 3% वृद्धि
+  let currentBasic=previousBasic;
+
+  if(m===7 && !julyApplied){
+   currentBasic=Math.round(currentBasic*1.03);
+   julyApplied=true;
+  }
+
+  const key=`${y}-${String(m).padStart(2,"0")}`;
+
+  if(overrides[key] !== undefined){
+   currentBasic=overrides[key];
+  }
+
+  records.push({
+   key,
+   year:y,
+   month:m,
+   basic:currentBasic,
+   oldDA,
+   newDA
+  });
+
+  previousBasic=currentBasic;
+
+  m++;
+  if(m>12){m=1;y++}
+ }
+
+ document.getElementById("result").style.display="block";
+ render();
+}
+
+function render(){
+
+ const tbody=document.getElementById("tableBody");
+ tbody.innerHTML="";
+
+ let total=0;
+
+ records.forEach((r,index)=>{
+
+  const oldAmount=r.basic*r.oldDA/100;
+  const newAmount=r.basic*r.newDA/100;
+  const arrear=newAmount-oldAmount;
+
+  total+=arrear;
+
+  const tr=document.createElement("tr");
+
+  const monthName=new Date(r.year,r.month-1,1)
+   .toLocaleDateString("hi-IN",{month:"long",year:"numeric"});
+
+  tr.innerHTML=`
+   <td>${monthName}</td>
+   <td>
+    <input type="number" min="0" step="1"
+     value="${r.basic}"
+     onchange="editBasic(${index},this.value)">
+   </td>
+   <td>${money(oldAmount)}</td>
+   <td>${money(newAmount)}</td>
+   <td><b>${money(arrear)}</b></td>
+  `;
+
+  tbody.appendChild(tr);
+ });
+
+ document.getElementById("total").textContent=money(total);
+ document.getElementById("grandTotal").textContent=money(total);
+
+ document.getElementById("difference").textContent=
+  (records[0].newDA-records[0].oldDA).toFixed(2)+"%";
+
+ document.getElementById("months").textContent=records.length;
+
+ const name=document.getElementById("empName").value;
+
+ document.getElementById("employeeInfo").innerHTML=
+  `<p><b>कर्मचारी का नाम:</b> ${escapeHTML(name || "दर्ज नहीं")}</p>`;
+}
+
+function editBasic(index,value){
+
+ const amount=Number(value);
+
+ if(value==="" || !Number.isFinite(amount) || amount<0){
+  alert("सही मूल वेतन दर्ज करें।");
+  render();
+  return;
+ }
+
+ const key=records[index].key;
+ overrides[key]=amount;
+
+ // संशोधित वेतन आगे के महीनों में भी लागू होगा
+ let previous=records[index].basic;
+
+ for(let i=index;i<records.length;i++){
+
+  if(i>index){
+   let next=previous;
+
+   // पहले से लागू जुलाई वृद्धि को दोबारा नहीं लगाना
+   // July increment is handled during initial generation.
+   records[i].basic=next;
+  }
+
+  if(overrides[records[i].key]!==undefined){
+   records[i].basic=overrides[records[i].key];
+  }
+
+  previous=records[i].basic;
+ }
+
+ render();
+}
+
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",
+  '"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function downloadCSV(){
+
+ if(!records.length)return;
+
+ let csv="\uFEFFमाह,मूल वेतन,पुराना DA,नया DA,DA एरियर\n";
+
+ records.forEach(r=>{
+  const oldAmount=r.basic*r.oldDA/100;
+  const newAmount=r.basic*r.newDA/100;
+
+  csv+=`${r.key},${r.basic},${oldAmount},${newAmount},${newAmount-oldAmount}\n`;
+ });
+
+ const blob=new Blob([csv],{type:"text/csv;charset=utf-8;"});
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="DA-Arrear-Report.csv";
+ a.click();
+ URL.revokeObjectURL(url);
+}
+
+function resetAll(){
+ if(confirm("क्या आप सभी दर्ज जानकारी रीसेट करना चाहते हैं?")){
+  location.reload();
+ }
+}
+</script>
+
+</body>
+</html>
