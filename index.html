@@ -1,167 +1,20 @@
----
-layout: null
-title: MP School Guide
----
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MP School Guide</title>
-</head>
-
-<body class="bg-slate-50">
-
-{% include header.html %}
-
-<!-- सूचना बॉक्स -->
-<div style="
-    display:block;
-    margin:30px 15px;
-    max-width:550px;
-    width:calc(100% - 30px);
-    background-color:#ffffff;
-    border:2px solid #ff6600;
-    border-radius:12px;
-    padding:10px;
-    box-shadow:0 6px 12px rgba(0,0,0,0.15);
-    font-family:sans-serif;
-    position:relative;
-    overflow:hidden;
-    box-sizing:border-box;
-    clear:both;
-">
-
-    <!-- वाटरमार्क -->
-    <div style="
-        position:absolute;
-        top:55%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        width:280px;
-        height:280px;
-        opacity:0.15;
-        filter:blur(2px);
-        z-index:1;
-        pointer-events:none;
-    ">
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
-        style="width:100%;height:100%;object-fit:contain;">
-    </div>
-
-    <!-- मुख्य कंटेंट -->
-    <div style="position:relative;z-index:2;width:100%;">
-
-        <!-- हेडर -->
-        <table style="
-            width:100%;
-            border-bottom:3px solid #ff6600;
-            padding-bottom:8px;
-            margin-bottom:15px;
-            border-collapse:collapse;
-        ">
-            <tr>
-                <td style="text-align:left;vertical-align:middle;width:60px;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
-                    style="height:45px;width:auto;object-fit:contain;">
-                </td>
-
-                <td style="
-                    text-align:center;
-                    font-size:22px;
-                    color:#333;
-                    font-weight:bold;
-                    vertical-align:middle;
-                ">
-                    सूचना / <span style="color:#ff6600;">अपडेट</span>
-                </td>
-
-                <td style="text-align:right;vertical-align:middle;width:60px;">
-                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
-                    style="height:45px;width:auto;object-fit:contain;">
-                </td>
-            </tr>
-        </table>
-
-        <!-- Dynamic सूचना शीर्षक -->
-        <div id="noticeTitle" style="
-            color:#dd6b20;
-            font-weight:bold;
-            font-size:17px;
-            margin-top:20px;
-            margin-bottom:12px;
-            text-align:center;
-        ">
-            सूचना लोड हो रही है...
-        </div>
-
-        <!-- Dynamic सूचना विवरण -->
-        <div id="noticeDescription" style="
-            font-size:15px;
-            line-height:1.7;
-            color:#2d3748;
-            text-align:justify;
-            margin-bottom:15px;
-            white-space:pre-line;
-            overflow-wrap:anywhere;
-        ">
-            कृपया प्रतीक्षा करें...
-        </div>
-
-        <!-- फुटर -->
-        <div style="
-            margin-top:20px;
-            border-top:2px dashed #ff6600;
-            padding-top:10px;
-            text-align:center;
-            font-size:14px;
-            color:#4a5568;
-            font-weight:bold;
-        ">
-            ✨ उपयोगी सूचना को साथियों के साथ शेयर करें ✨
-        </div>
-
-    </div>
-</div>
-
-<!-- Google Sheets से सूचना प्राप्त करें -->
-<script>
-(function () {
-
-    const API_URL = "https://script.google.com/macros/s/AKfycbwwXxC6cWgL1iua1ZK2xoCaIf2YoO9987jaASsD-5jbT-tJCaHHOIeibhvje6mM8DUn8Q/exec";
-
-    const titleBox = document.getElementById("noticeTitle");
-    const descriptionBox = document.getElementById("noticeDescription");
-
-    window.loadMPNotice = function(data) {
-
-        if (data && data.title && data.description) {
-            titleBox.textContent = data.title;
-            descriptionBox.textContent = data.description;
-        } else {
-            titleBox.textContent = "कोई नई सूचना उपलब्ध नहीं है";
-            descriptionBox.textContent = "";
+    <title></title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
         }
-
-    };
-
-    const script = document.createElement("script");
-
-    script.src = API_URL +
-        (API_URL.includes("?") ? "&" : "?") +
-        "callback=loadMPNotice&_=" + Date.now();
-
-    script.onerror = function() {
-        titleBox.textContent = "सूचना लोड नहीं हो सकी";
-        descriptionBox.textContent =
-            "कृपया कुछ समय बाद पुनः प्रयास करें।";
-    };
-
-    document.body.appendChild(script);
-
-})();
-</script>
+    </style>
+</head>
+<body>
 
 </body>
 </html>
