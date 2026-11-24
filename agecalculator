@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+{% include header.html %}
+<title>Age Calculator | जन्म तिथि से उम्र निकालें (सटीक वर्ष, माह और दिन)</title>
+<meta name="description" content="जन्म तिथि से उम्र निकालने का आसान Age Calculator। वर्ष, माह और दिन में उम्र जानें। इसके फायदे और इस्तेमाल करने का पूरा तरीका सीखें।">
+<meta name="keywords" content="Age Calculator, उम्र निकालने का टूल, जन्म तिथि से उम्र, Date of Birth Calculator, मेरी उम्र कितनी है">
+<meta name="author" content="Age Calculator Tool">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #eef5ff;
+    color: #333;
+    line-height: 1.6;
+}
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #0b3c91;
+    margin-bottom: 5px;
+}
+.subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+    color: #0b3c91;
+}
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+.calculate-btn {
+    background: #0b5ed7;
+    color: white;
+}
+.calculate-btn:hover {
+    background: #084298;
+}
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f1f8ff;
+    border-left: 5px solid #0b5ed7;
+    font-weight: bold;
+    text-align: center;
+    font-size: 18px;
+    color: #0b3c91;
+    border-radius: 0 6px 6px 0;
+}
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+    margin-top: 20px;
+}
+.whatsapp-btn:hover {
+    background: #1da851;
+}
+
+/* ===== ARTICLE STYLES ===== --> */
+.article-section {
+    margin-top: 40px;
+    border-top: 2px dashed #ccc;
+    padding-top: 25px;
+}
+.article-section h2 {
+    color: #0b3c91;
+    font-size: 20px;
+    margin-top: 25px;
+    border-bottom: 2px solid #f1f8ff;
+    padding-bottom: 5px;
+}
+.article-section h3 {
+    color: #084298;
+    font-size: 17px;
+    margin-top: 18px;
+}
+.article-section p {
+    font-size: 15px;
+    color: #444;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+.article-section ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+.article-section li {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 8px;
+}
+.blockquote {
+    background: #f9f9f9;
+    border-left: 4px solid #25D366;
+    padding: 15px;
+    margin: 20px 0;
+    font-style: italic;
+    border-radius: 0 6px 6px 0;
+}
+.footer-note {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 30px;
+    color: #888;
+}
+</style>
+</head>
+<div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPbfkh1-ziyrFnIQ6u6KhHaRGyuAw29NbedM9FPEzbVwzY1Gw6phvHp7ewUxmtEYQqxI1b7sjguHBhQ1i2LjVcjMxjSuc0y0IiAz5uU4Y7q-Fnp5srxwyQU0bm3ic-NbygEAJMStuuT6A_cVNWwtRGVQNMvYVfVM2pdSaG74wmJFTCrih1MKnyzt1KNHg/s1254/1000111786.png" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="320" data-original-height="1254" data-original-width="1254" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgPbfkh1-ziyrFnIQ6u6KhHaRGyuAw29NbedM9FPEzbVwzY1Gw6phvHp7ewUxmtEYQqxI1b7sjguHBhQ1i2LjVcjMxjSuc0y0IiAz5uU4Y7q-Fnp5srxwyQU0bm3ic-NbygEAJMStuuT6A_cVNWwtRGVQNMvYVfVM2pdSaG74wmJFTCrih1MKnyzt1KNHg/s320/1000111786.png"/></a></div>
+<body>
+
+<div class="container">
+    <h1>Age Calculator</h1>
+    <p class="subtitle">जन्म तिथि से सही उम्र निकालें (वर्ष, माह, दिन)</p>
+
+    <label>जन्म दिनांक</label>
+    <input type="date" id="dob">
+
+    <label>किस तारीख तक</label>
+    <input type="date" id="toDate">
+
+    <button class="calculate-btn" onclick="calculateAge()">उम्र निकालें</button>
+
+    <div class="result" id="result">यहाँ परिणाम दिखेगा</div>
+
+    <button class="whatsapp-btn" onclick="joinWhatsApp()">
+        📲 व्हाट्सएप चैनल ज्वाइन करें
+    </button>
+
+
+    <div class="article-section">
+        <h2>Age Calculator: जन्म तिथि से सही उम्र कैसे निकालें और इसके क्या फायदे हैं?</h2>
+        <p>आज के डिजिटल दौर में सब कुछ एक क्लिक पर उपलब्ध है, लेकिन जब बात अपनी सही उम्र (सटीक वर्ष, महीने और दिन) गिनने की आती है, तो अक्सर लोग उंगलियों पर हिसाब लगाने लगते हैं। सरकारी फॉर्म भरना हो, नौकरी के लिए आवेदन करना हो, या फिर किसी दस्तावेज़ की कागज़ी कार्रवाई—हर जगह बिल्कुल सटीक उम्र मांगी जाती है।</p>
+        <p>अगर आप भी "मेरी उम्र कितनी है?" या "जन्म तिथि से उम्र कैसे निकालें?" जैसी उलझनों में फंस जाते हैं, तो यह <strong>Age Calculator</strong> टूल आपके काम को बेहद आसान बनाने के लिए डिज़ाइन किया गया है। आइए विस्तार से जानते हैं कि यह टूल कैसे काम करता, इसके क्या फायदे हैं और आप इसका इस्तेमाल कैसे कर सकते हैं।</p>
+
+        <h2>ऑनलाइन Age Calculator क्या है?</h2>
+        <p>सरल शब्दों में कहें तो <strong>Age Calculator</strong> एक ऐसा स्मार्ट और ऑटोमैटिक ऑनलाइन टूल है, जो आपकी जन्म तिथि (Date of Birth) और मौजूदा तारीख (या किसी विशेष तारीख) के बीच के अंतर को तुरंत निकाल कर दे देता है।</p>
+        <p>इंसानी दिमाग से जब हम उम्र की गणना करते हैं, तो लीप ईयर (Leap Year) और 30 या 31 दिन वाले महीनों के चक्कर में अक्सर एक-दो दिन की चूक हो जाती है। लेकिन यह टूल बिना किसी गलती के, माइक्रोसेकंड में आपको आपकी उम्र <strong>वर्ष (Years), महीने (Months) और दिन (Days)</strong> के सटीक फॉर्मेट में बता देता है।</p>
+
+        <h2>इस टूल का इस्तेमाल कैसे करें? (Step-by-Step Guide)</h2>
+        <p>इस कैलकुलेटर को इतना सिंपल बनाया गया है कि कोई भी व्यक्ति—चाहे वह तकनीक में कितना भी नया हो—इसे आसानी से चला सकता है। आपको बस नीचे दिए गए कुछ आसान स्टेप्स को फॉलो करना है:</p>
+        <ul>
+            <li><strong>स्टेप 1: जन्म दिनांक चुनें (Select Date of Birth):</strong> सबसे पहले ऊपर दिए गए 'जन्म दिनांक' वाले बॉक्स पर क्लिक करें। आपके सामने एक केंटर खुलेगा, उसमें से अपने जन्म का वर्ष, महीना और तारीख चुन लें।</li>
+            <li><strong>स्टेप 2: किस तारीख तक उम्र निकालनी है (Select 'To Date'):</strong> दूसरे बॉक्स में वह तारीख चुनें, जिस तारीख तक आप अपनी उम्र जानना चाहते हैं। आमतौर पर इसमें आज की तारीख (Current Date) पहले से सेट रहती है, लेकिन अगर आप किसी पुरानी या भविष्य की तारीख (जैसे किसी फॉर्म की आखिरी तारीख) के हिसाब से उम्र निकालना चाहते हैं, तो वह तारीख यहाँ बदल सकते हैं।</li>
+            <li><strong>स्टेप 3: बटन पर क्लिक करें:</strong> दोनों तारीखें भरने के बाद नीचे दिए गए नीले रंग के <strong>"उम्र निकालें"</strong> बटन पर क्लिक करें।</li>
+            <li><strong>स्टेप 4: परिणाम देखें:</strong> बटन दबाते ही आपके सामने बिल्कुल सटीक परिणाम आ जाएगा, जैसे—<em>उम्र: 25 वर्ष 4 माह 12 दिन</em>।</li>
+        </ul>
+
+        <h2>ऑनलाइन उम्र निकालने के बेहतरीन फायदे</h2>
+        <p>मैन्युअल रूप से कैलेंडर देखकर उम्र का हिसाब लगाने के मुकाबले इस डिजिटल टूल का उपयोग करने के कई बड़े फायदे हैं:</p>
+        
+        <h3>1. 100% सटीक परिणाम (Zero Errors)</h3>
+        <p>जब हम खुद हिसाब लगाते हैं, तो फरवरी के 28/29 दिन या किसी महीने के 30 और 31 दिन होने की वजह से गणित गड़बड़ हो जाता है। सरकारी परीक्षाओं या दस्तावेज़ों में ऐसी छोटी सी गलती भी आपका फॉर्म रिजेक्ट करवा सकती है। यह कैलकुलेटर पूरी तरह कोडिंग पर काम करता है, इसलिए इसके परिणाम शत-प्रतिशत सही होते हैं।</p>
+
+        <h3>2. समय की भारी बचत</h3>
+        <p>अगर आप किसी साइबर कैफे में काम करते हैं या खुद कोई फॉर्म भर रहे हैं, तो एक-एक व्यक्ति की उम्र मैन्युअल गिनने में काफी वक्त बर्बाद होता है। इस टूल की मदद से आप सिर्फ 5 सेकंड के भीतर काम निपटा सकते हैं।</p>
+
+        <h3>3. सरकारी नौकरियों और फॉर्म भरने में मददगार</h3>
+        <p>अधिकतर प्रतियोगी परीक्षाओं (UPSC, SSC, Banking, Railway) या स्कूल-कॉलेज के एडमिशन फॉर्म में एक खास कट-ऑफ डेट दी जाती है (जैसे: 1 जनवरी 2026 तक आपकी उम्र क्या है?)। ऐसे में यह टूल वरदान साबित होता है, क्योंकि आप 'To Date' वाले सेक्शन में वह कट-ऑफ तारीख डालकर आपकी योग्य उम्र तुरंत जान सकते हैं।</p>
+
+        <h3>4. मोबाइल फ्रेंडली और फ्री</h3>
+        <p>इस टूल का इस्तेमाल करने के लिए आपको कोई पैसे नहीं देने हैं और न ही कोई भारी-भरकम ऐप डाउनलोड करने की जरूरत है। इसे आप अपने मोबाइल, टैबलेट या कंप्यूटर पर कभी भी और कहीं भी आसानी से खोलकर इस्तेमाल कर सकते हैं</p>
+
+        <h2>इस टूल की जरूरत कहाँ-कहाँ पड़ती है?</h2>
+        <p>उम्र का पता होना सिर्फ एक सामान्य जानकारी नहीं है, बल्कि कई महत्वपूर्ण जगहों पर यह अनिवार्य होती है:</p>
+        <ul>
+            <li><strong>दस्तावेज़ बनवाने में:</strong> आधार कार्ड, पैन कार्ड, वोटर आईडी या पासपोर्ट के आवेदन के समय।</li>
+            <li><strong>बीमा (Insurance) लेते समय:</strong> लाइफ इंश्योरेंस या हेल्थ इंश्योरेंस प्रीमियम की राशि पूरी तरह से आपकी सटीक उम्र पर निर्भर करती है।</li>
+            <li><strong>रिटायरमेंट प्लानिंग:</strong> आपकी नौकरी के कितने साल बचे हैं या पीएफ (PF) की गणना के लिए सटीक उम्र का पता होना जरूरी है।</li>
+            <li><strong>ज्योतिष और कुंडली:</strong> कई बार सटीक कुंडली या राशिफल देखने के लिए भी ज्योतिषी आपसे वर्ष और दिनों का सही हिसाब मांगते हैं।</li>
+        </ul>
+
+        <h2>निष्कर्ष</h2>
+        <p>उम्र सिर्फ एक संख्या हो सकती है, लेकिन व्यावहारिक जीवन और कानूनी कागजातों में यह संख्या बहुत मायने रखती है। अब आपको उंगलियों पर दिन गिनने या पुरानी डायरियों में हिसाब लगाने की कोई जरूरत नहीं है। हमारे इस <strong>Age Calculator</strong> को बुकमार्क कर लें ताकि भविष्य में जब भी जरूरत पड़े, आप तुरंत अपनी या अपने दोस्तों की उम्र निकाल सकें।</p>
+
+        <div class="blockquote">
+            <strong>💡 एक ज़रूरी बात:</strong> अगर आपको यह टूल मददगार लगा और आप ऐसे ही काम के ऐप्स, जरूरी अपडेट्स और टूल्स की जानकारी सबसे पहले पाना चाहते हैं, तो नीचे दिए गए <strong>"व्हाट्सएप चैनल ज्वाइन करें"</strong> बटन पर क्लिक करके हमारे कम्युनिटी का हिस्सा जरूर बनें!
+        </div>
+    </div>
+
+    <div class="footer-note">
+        Free Online Age Calculator Tool © 2026
+    </div>
+</div>
+
+<script>
+// आज की तारीख डिफ़ॉल्ट रूप से सेट करने के लिए (To Date में)
+document.getElementById('toDate').valueAsDate = new Date();
+
+function calculateAge(){
+    var dobValue = document.getElementById("dob").value;
+    var toDateValue = document.getElementById("toDate").value;
+
+    if(dobValue=="" || toDateValue==""){
+        document.getElementById("result").innerHTML = "कृपया दोनों दिनांक चुनें";
+        return;
+    }
+
+    var dob = new Date(dobValue);
+    var toDate = new Date(toDateValue);
+
+    if(dob > toDate){
+        document.getElementById("result").innerHTML = "जन्म दिनांक आगे की नहीं हो सकती";
+        return;
+    }
+
+    var years = toDate.getFullYear() - dob.getFullYear();
+    var months = toDate.getMonth() - dob.getMonth();
+    var days = toDate.getDate() - dob.getDate();
+
+    if(days < 0){
+        months--;
+        days += new Date(toDate.getFullYear(), toDate.getMonth(), 0).getDate();
+    }
+    if(months < 0){
+        years--;
+        months += 12;
+    }
+
+    document.getElementById("result").innerHTML =
+        "उम्र: " + years + " वर्ष " + months + " माह " + days + " दिन";
+}
+
+function joinWhatsApp(){
+    window.open("https://whatsapp.com/channel/0029VbBQfmMLCoWwvkvpri1q","_blank");
+}
+</script>
+
+</body>
+</html>
