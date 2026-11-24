@@ -1,0 +1,118 @@
+---
+layout: null
+title: MP School Guide
+---
+{% include header.html %}
+<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 550px; margin: 20px auto; padding: 25px; border: 2px solid #27ae60; border-radius: 15px; background-color: #ffffff; box-shadow: 0px 10px 20px rgba(0,0,0,0.1);">  
+    <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">8वां वेतन आयोग अनुमानित गणना </h2>  <div style="margin-bottom: 15px;">  
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">वर्तमान बेसिक पे (7th Pay):</label>  
+    <input type="number" id="basicPay" placeholder="उदा. 35400" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
+</div>  
+
+<div style="display: flex; gap: 15px; margin-bottom: 15px;">  
+    <div style="flex: 1;">  
+        <label style="display: block; margin-bottom: 5px; font-weight: bold;">7th Pay DA (%):</label>  
+        <input type="number" id="daInput" value="50" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
+    </div>  
+    <div style="flex: 1;">  
+        <label style="display: block; margin-bottom: 5px; font-weight: bold;">फिटमेंट फैक्टर:</label>  
+        <input type="number" id="fitmentInput" value="2.46" step="0.01" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
+    </div>  
+</div>  
+
+<div style="margin-bottom: 20px;">  
+    <label style="display: block; margin-bottom: 5px; font-weight: bold;">HRA प्रतिशत (चुनें या भरें):</label>  
+    <div style="display: flex; gap: 10px;">  
+        <select id="hraSelect" onchange="document.getElementById('hraInput').value = this.value" style="width: 50%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px;">  
+            <option value="27">27% (X श्रेणी)</option>  
+            <option value="11">11% (Y श्रेणी)</option>  
+            <option value="5">5% (Z श्रेणी)</option>  
+        </select>  
+        <div style="position: relative; width: 50%;">  
+            <input type="number" id="hraInput" value="27" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
+            <span style="position: absolute; right: 10px; top: 12px; color: #7f8c8d;">%</span>  
+        </div>  
+    </div>  
+</div>  
+
+<button onclick="calculateSalary()" style="width: 100%; padding: 15px; background-color: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s;">कैलकुलेशन देखें</button>  
+
+<div id="result" style="margin-top: 25px; display: none;">  
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">  
+        <thead>  
+            <tr style="background-color: #2c3e50; color: white;">  
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">विवरण</th>  
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: right;">7वां वेतन</th>  
+                <th style="padding: 12px; border: 1px solid #ddd; text-align: right;">8वां वेतन</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            <tr>  
+                <td style="padding: 10px; border: 1px solid #ddd;">बेसिक पे</td>  
+                <td id="bp7" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
+                <td id="bp8" style="padding: 10px; border: 1px solid #ddd; text-align: right; font-weight: bold; color: #e67e22;"></td>  
+            </tr>  
+            <tr>  
+                <td style="padding: 10px; border: 1px solid #ddd;">DA</td>  
+                <td id="da7_val" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">₹0 (Merge)</td>  
+            </tr>  
+            <tr>  
+                <td style="padding: 10px; border: 1px solid #ddd;">HRA</td>  
+                <td id="hra7" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
+                <td id="hra8" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
+            </tr>  
+            <tr style="background-color: #f1f8ff; font-weight: bold;">  
+                <td style="padding: 12px; border: 1px solid #ddd;">कुल सैलरी</td>  
+                <td id="total7" style="padding: 12px; border: 1px solid #ddd; text-align: right;"></td>  
+                <td id="total8" style="padding: 12px; border: 1px solid #ddd; text-align: right; color: #27ae60;"></td>  
+            </tr>  
+        </tbody>  
+    </table>  
+    <div style="background-color: #e8f6f3; padding: 15px; border-radius: 8px; text-align: center; border-left: 5px solid #27ae60;">  
+        <span style="font-size: 16px; color: #2c3e50;">मासिक सैलरी में शुद्ध लाभ:</span><br>  
+        <strong id="diff" style="font-size: 24px; color: #27ae60;"></strong>  
+    </div>  
+</div>
+
+</div>  <script>  
+function calculateSalary() {  
+    let bp7 = parseFloat(document.getElementById('basicPay').value);  
+    let daPercent7 = parseFloat(document.getElementById('daInput').value);  
+    let fitmentFactor = parseFloat(document.getElementById('fitmentInput').value);  
+    let hraPercent = parseFloat(document.getElementById('hraInput').value);  
+  
+    if (isNaN(bp7) || bp7 <= 0) {  
+        alert("कृपया सही बेसिक सैलरी भरें");  
+        return;  
+    }  
+  
+    let hraRate = hraPercent / 100;  
+    let daRate7 = daPercent7 / 100;  
+  
+    // 7th Pay Calculation  
+    let da7_amt = bp7 * daRate7;  
+    let hra7_amt = bp7 * hraRate;  
+    let total7 = bp7 + da7_amt + hra7_amt;  
+  
+    // 8th Pay Calculation  
+    let bp8 = bp7 * fitmentFactor;  
+    let hra8_amt = bp8 * hraRate;  
+    let total8 = bp8 + hra8_amt; // DA becomes 0% as it's merged in Basic  
+  
+    const formatter = new Intl.NumberFormat('en-IN', {  
+        style: 'currency', currency: 'INR', maximumFractionDigits: 0  
+    });  
+  
+    document.getElementById('bp7').innerText = formatter.format(bp7);  
+    document.getElementById('bp8').innerText = formatter.format(bp8);  
+    document.getElementById('da7_val').innerText = formatter.format(da7_amt) + " (" + daPercent7 + "%)";  
+    document.getElementById('hra7').innerText = formatter.format(hra7_amt);  
+    document.getElementById('hra8').innerText = formatter.format(hra8_amt);  
+    document.getElementById('total7').innerText = formatter.format(total7);  
+    document.getElementById('total8').innerText = formatter.format(total8);  
+      
+    document.getElementById('diff').innerText = formatter.format(total8 - total7);  
+    document.getElementById('result').style.display = 'block';  
+}  
+</script>
