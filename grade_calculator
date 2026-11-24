@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP School Guide – Grade Chart</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#fff6ee;
+    margin:0;
+    padding:10px;
+}
+h2,h3{text-align:center;margin:8px 0;}
+.notice{
+    text-align:center;
+    font-size:14px;
+    color:#b30000;
+    margin-bottom:5px;
+}
+.table-box{
+    overflow-x:auto;
+    border:1px solid #000;
+    background:#fff;
+}
+table{
+    border-collapse:collapse;
+    min-width:900px;
+}
+th,td{
+    border:1px solid #000;
+    padding:6px;
+    text-align:center;
+    font-size:14px;
+}
+th{
+    background:#f2d6c9;
+    position:sticky;
+    top:0;
+}
+.box{
+    background:#ffe8da;
+    padding:15px;
+    margin-top:20px;
+    border:1px solid #000;
+}
+select,input,button{
+    width:100%;
+    padding:8px;
+    margin-top:8px;
+    font-size:16px;
+}
+button{
+    background:#b30000;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.result{
+    margin-top:10px;
+    font-size:18px;
+    font-weight:bold;
+    color:#006400;
+    text-align:center;
+}
+@media (min-width:768px){
+    select,input,button{width:50%;}
+}
+</style>
+</head>
+
+<body>
+
+<h2>MP School Guide</h2>
+<h3>शैक्षिक एवं सह-शैक्षिक मूल्यांकन<br>अंकवार ग्रेड चार्ट</h3>
+
+<div class="notice">⬅️ टेबल देखने के लिए दाएँ-बाएँ स्क्रॉल करें ➡️</div>
+
+<div class="table-box">
+<table>
+<tr>
+<th>कुल अंक</th><th>A+</th><th>A</th><th>B+</th><th>B</th>
+<th>C+</th><th>C</th><th>D</th><th>E</th>
+</tr>
+
+<tr><td>20</td><td>17–20</td><td>15–16</td><td>13–14</td><td>11–12</td><td>10</td><td>9</td><td>7–8</td><td>0–6</td></tr>
+<tr><td>40</td><td>34–40</td><td>30–33</td><td>26–29</td><td>22–25</td><td>20–21</td><td>18–19</td><td>13–17</td><td>0–12</td></tr>
+<tr><td>60</td><td>51–60</td><td>45–50</td><td>40–44</td><td>34–39</td><td>31–33</td><td>28–30</td><td>20–27</td><td>0–19</td></tr>
+
+<!-- ✅ 70 Added -->
+<tr><td>70</td><td>60–70</td><td>53–59</td><td>46–52</td><td>40–45</td><td>36–39</td><td>33–35</td><td>23–32</td><td>0–22</td></tr>
+
+<!-- ✅ 80 Added -->
+<tr><td>80</td><td>68–80</td><td>60–67</td><td>53–59</td><td>45–52</td><td>41–44</td><td>37–40</td><td>27–36</td><td>0–26</td></tr>
+
+<tr><td>100</td><td>85–100</td><td>75–84</td><td>66–74</td><td>56–65</td><td>51–55</td><td>46–50</td><td>33–45</td><td>0–32</td></tr>
+<tr><td>150</td><td>128–150</td><td>113–127</td><td>99–112</td><td>84–98</td><td>77–83</td><td>69–76</td><td>50–68</td><td>0–49</td></tr>
+<tr><td>200</td><td>170–200</td><td>150–169</td><td>132–149</td><td>112–131</td><td>102–111</td><td>92–101</td><td>66–91</td><td>0–65</td></tr>
+<tr><td>240</td><td>204–240</td><td>180–203</td><td>158–179</td><td>134–157</td><td>122–133</td><td>110–121</td><td>79–109</td><td>0–78</td></tr>
+<tr><td>360</td><td>306–360</td><td>270–305</td><td>238–269</td><td>202–237</td><td>184–201</td><td>166–183</td><td>119–165</td><td>0–118</td></tr>
+<tr><td>400</td><td>340–400</td><td>300–339</td><td>264–299</td><td>224–263</td><td>204–223</td><td>184–203</td><td>132–183</td><td>0–131</td></tr>
+<tr><td>600</td><td>511–600</td><td>450–510</td><td>396–449</td><td>336–395</td><td>306–335</td><td>276–305</td><td>198–275</td><td>0–197</td></tr>
+</table>
+</div>
+
+<div class="box">
+<h3>🔍 Grade Calculator</h3>
+
+<label>कुल अंक चुनें</label>
+<select id="total">
+<option value="">--Select--</option>
+<option>20</option>
+<option>40</option>
+<option>60</option>
+<option>70</option>
+<option>80</option>
+<option>100</option>
+<option>150</option>
+<option>200</option>
+<option>240</option>
+<option>360</option>
+<option>400</option>
+<option>600</option>
+</select>
+
+<label>प्राप्त अंक</label>
+<input type="number" id="marks" placeholder="अंक दर्ज करें">
+
+<button onclick="findGrade()">Grade देखें</button>
+<div class="result" id="output"></div>
+</div>
+
+<script>
+function findGrade(){
+ let t=parseInt(total.value), m=parseInt(marks.value);
+ if(isNaN(t)||isNaN(m)){output.innerHTML="कृपया सही जानकारी भरें";return;}
+ let p=(m/t)*100, g="";
+ if(p>=85)g="A+";
+ else if(p>=75)g="A";
+ else if(p>=66)g="B+";
+ else if(p>=56)g="B";
+ else if(p>=51)g="C+";
+ else if(p>=46)g="C";
+ else if(p>=33)g="D";
+ else g="E";
+ output.innerHTML="आपका Grade : "+g;
+}
+</script> 
+  <style>
+.grade-info-box {
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  border-left: 6px solid #2196f3;
+  padding: 15px;
+  border-radius: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.grade-info-box h3 {
+  color: #0d47a1;
+  margin-bottom: 10px;
+}
+
+.grade-info-box ul {
+  padding-left: 18px;
+}
+
+.grade-info-box li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.note-box {
+  background-color: #fff3cd;
+  border-left: 5px solid #ff9800;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: #856404;
+  font-size: 14px;
+}
+
+@media(max-width: 600px){
+  .grade-info-box {
+    font-size: 14px;
+  }
+}
+</style>
+
+<div class="grade-info-box">
+  <h3>📊 ग्रेड चार्ट और ग्रेड कैलकुलेटर का उपयोग कैसे करें</h3>
+  
+  <ul>
+    <li>📱 यदि आप यह पेज मोबाइल में देख रहे हैं, तो पूरे ग्रेड चार्ट को देखने के लिए पेज को दाएं-बाएं (Scroll) करें।</li>
+    
+    <li>🧮 ग्रेड कैलकुलेटर का उपयोग करने के लिए:
+      <ul>
+        <li>सबसे पहले <b>कुल अंक (Total Marks)</b> का चयन करें।</li>
+        <li>इसके बाद नीचे <b>प्राप्त अंक (Obtained Marks)</b> दर्ज करें।</li>
+        <li>जैसे ही आप अंक दर्ज करेंगे, नीचे आपका <b>ग्रेड स्वतः दिखाई देगा</b>।</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="note-box">
+    ⚠️ <b>महत्वपूर्ण नोट:</b><br>
+    यदि आप कुल अंक से अधिक प्राप्त अंक दर्ज करते हैं, तो कैलकुलेटर <b>A+ ग्रेड</b> दिखाएगा।<br>
+    इसलिए कृपया <b>कुल अंक का चयन सावधानीपूर्वक करें</b>।
+  </div>
+  </div>
+  <p></p>
+  
+<a href="https://schoolguidemp.blogspot.com/p/calendar.html" 
+style="color: blue;">
+मध्यप्रदेश शासन के राजपत्र अनुसार शासकीय अवकाश देखने के लिए क्लिक करे
+</a><br><br>
+<a href="https://schoolguidemp.blogspot.com/p/home-page.html?m=1" style="color:blue;">
+ mp school guide के होम पेज पर जाए और विभिन्न उपयोगी सामग्री एक ही जगह देखे इस लाइन पर क्लिक करे 
+</a><br><br>
+
+  
+<a href="https://schoolguidemp.blogspot.com" style="color:red;">
+    ताजा ब्लॉग देखने के लिए क्लिक करे</a> <br><br>
+</body>
+</html>
