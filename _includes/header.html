@@ -33,8 +33,12 @@
   <!-- Mobile Sidebar -->
   <aside id="sidebarMenu" class="fixed top-0 left-0 bottom-0 w-[280px] sm:w-[320px] bg-white z-[9999] -translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
     <div class="p-4 border-b border-white/10 flex justify-between items-center bg-[#0b3c5d] text-white">
-      <div class="flex items-center gap-2 font-bold text-base">
-        <i class="fa-solid fa-graduation-cap text-amber-400 text-xl"></i>
+      <div class="flex items-center gap-2.5 font-bold text-base">
+        <img
+          src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+          alt="MP School Guide Logo"
+          class="w-9 h-9 rounded-md object-cover bg-white p-0.5 flex-shrink-0"
+        />
         <span>MP SCHOOL GUIDE</span>
       </div>
       <button onclick="toggleSidebar()" class="text-white hover:text-amber-300 text-2xl p-1 focus:outline-none">
@@ -52,14 +56,6 @@
           <i class="fa-solid fa-calendar-days w-5 text-[#0b3c5d]"></i>
           <span>कैलेंडर</span>
         </a>
-        <a href="#forms" class="flex items-center gap-3.5 px-5 py-3 text-slate-700 font-bold hover:bg-slate-100 hover:text-[#0b3c5d] transition-all border-b border-slate-100 text-sm">
-          <i class="fa-solid fa-file-pen w-5 text-[#0b3c5d]"></i>
-          <span>डाउनलोड प्रपत्र (Forms)</span>
-        </a>
-        <a href="#orders" class="flex items-center gap-3.5 px-5 py-3 text-slate-700 font-bold hover:bg-slate-100 hover:text-[#0b3c5d] transition-all border-b border-slate-100 text-sm">
-          <i class="fa-solid fa-file-contract w-5 text-[#0b3c5d]"></i>
-          <span>अन्य</span>
-        </a>
         <a href="#about" class="flex items-center gap-3.5 px-5 py-3 text-slate-700 font-bold hover:bg-slate-100 hover:text-[#0b3c5d] transition-all border-b border-slate-100 text-sm">
           <i class="fa-solid fa-circle-info w-5 text-[#0b3c5d]"></i>
           <span>हमारे बारे में</span>
@@ -71,25 +67,20 @@
         <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
           <a href="#home" class="bg-slate-100 p-2.5 rounded text-center text-slate-700 hover:bg-[#0b3c5d] hover:text-white transition-all">होम पेज</a>
           <a href="#calendar" class="bg-slate-100 p-2.5 rounded text-center text-slate-700 hover:bg-[#0b3c5d] hover:text-white transition-all">कैलेंडर</a>
-          <a href="#forms" class="bg-slate-100 p-2.5 rounded text-center text-slate-700 hover:bg-[#0b3c5d] hover:text-white transition-all">फॉर्म व प्रपत्र</a>
-          <a href="#orders" class="bg-slate-100 p-2.5 rounded text-center text-slate-700 hover:bg-[#0b3c5d] hover:text-white transition-all">नवीन आदेश</a>
         </div>
       </div>
 
       <div class="mt-6 px-5">
         <p class="text-[11px] font-extrabold uppercase text-slate-400 tracking-wider mb-3">सोशल मीडिया</p>
         <div class="flex gap-2.5">
-          <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
+            <a href="https://whatsapp.com/channel/0029VbBQfmMLCoWwvkvpri1q" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="https://www.facebook.com/share/1EYf3MJCqS/" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
             <i class="fa-brands fa-facebook-f"></i>
           </a>
-          <a href="https://x.com" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
-            <i class="fa-brands fa-x-twitter"></i>
-          </a>
-          <a href="https://t.me" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
+          <a href="https://t.me/mpschoolguide" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
             <i class="fa-brands fa-telegram"></i>
-          </a>
-          <a href="https://youtube.com" target="_blank" class="w-9 h-9 rounded-full bg-[#0b3c5d] text-white flex items-center justify-center hover:bg-[#e67e22] transition-colors">
-            <i class="fa-brands fa-youtube"></i>
           </a>
         </div>
       </div>
@@ -104,8 +95,12 @@
   <header class="bg-white border-b-4 border-[#e67e22] fixed top-[32px] left-0 right-0 z-40 h-[76px] shadow-md flex items-center px-4">
     <div class="max-w-7xl mx-auto w-full flex justify-between items-center">
       <a href="#home" class="flex items-center gap-3 group no-underline">
-        <div class="w-12 h-12 rounded-lg bg-[#0b3c5d] text-white flex items-center justify-center shadow-sm group-hover:bg-[#e67e22] transition-colors flex-shrink-0">
-          <i class="fa-solid fa-graduation-cap text-2xl text-amber-300"></i>
+        <div class="w-12 h-12 rounded-lg bg-[#0b3c5d] p-0.5 flex items-center justify-center shadow-sm group-hover:ring-2 group-hover:ring-[#e67e22] transition-all flex-shrink-0 overflow-hidden">
+          <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+            alt="MP School Guide Logo"
+            class="w-full h-full object-cover rounded-md bg-white"
+          />
         </div>
         <div class="flex flex-col justify-center">
           <span class="text-base sm:text-xl font-black text-[#0b3c5d] tracking-tight uppercase leading-tight">
@@ -137,14 +132,6 @@
         <a href="#calendar" class="px-4 py-2.5 hover:bg-black/20 text-slate-100 border-r border-white/10 flex items-center gap-2 transition-colors">
           <i class="fa-solid fa-calendar-days text-amber-300"></i>
           <span>शैक्षणिक कैलेंडर</span>
-        </a>
-        <a href="#forms" class="px-4 py-2.5 hover:bg-black/20 text-slate-100 border-r border-white/10 flex items-center gap-2 transition-colors">
-          <i class="fa-solid fa-file-pen text-amber-300"></i>
-          <span>डाउनलोड प्रपत्र (Forms)</span>
-        </a>
-        <a href="#orders" class="px-4 py-2.5 hover:bg-black/20 text-slate-100 border-r border-white/10 flex items-center gap-2 transition-colors">
-          <i class="fa-solid fa-file-contract text-amber-300"></i>
-          <span>अन्य</span>
         </a>
         <a href="#about" class="px-4 py-2.5 hover:bg-black/20 text-slate-100 border-r border-white/10 flex items-center gap-2 transition-colors">
           <i class="fa-solid fa-circle-info text-amber-300"></i>
