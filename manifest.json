@@ -1,0 +1,23 @@
+{
+  "name": "MP SCHOOL GUIDE",
+  "short_name": "MPSG",
+  "start_url": "https://www.mpschoolguide.in",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#007bff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://cdn.jsdelivr.net/gh/devendrasinghparali/Mp-school-guide/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "https://cdn.jsdelivr.net/gh/devendrasinghparali/Mp-school-guide/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}
