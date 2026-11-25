@@ -5,6 +5,8 @@ title: MP School Guide
 <!DOCTYPE html>
 <html lang="hi">
   <head>
+    <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#007bff">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MP School Guide</title>
@@ -484,5 +486,18 @@ title: MP School Guide
       </div>
     </div>
     <!-- End MP Portals and Apps -->
+    <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js")
+      .then((registration) => {
+        console.log("PWA Service Worker सक्रिय:", registration.scope);
+      })
+      .catch((error) => {
+        console.error("Service Worker Error:", error);
+      });
+  });
+}
+    </script>
   </body>
 </html>
