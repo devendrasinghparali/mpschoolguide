@@ -1,119 +1,606 @@
 ---
 layout: null
-title: MP School Guide
+title: 8वां वेतन आयोग कैलकुलेटर – MP School Guide
+permalink: /tool/8thpay/
 ---
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>8वां वेतन आयोग कैलकुलेटर 2026 | 8th Pay Commission Calculator – MP School Guide</title>
+
+<meta name="description" content="8वां वेतन आयोग कैलकुलेटर से अपना अनुमानित नया बेसिक पे, DA, HRA और मासिक सैलरी जानें। फिटमेंट फैक्टर बदलकर 7वें और 8वें वेतन आयोग की तुलना करें।">
+
+<meta name="keywords" content="8th Pay Commission Calculator, 8वां वेतन आयोग कैलकुलेटर, 8th Pay Calculator 2026, Fitment Factor Calculator, 8th Pay Salary Calculator, MP School Guide, 8वां वेतन आयोग सैलरी">
+
+<meta name="author" content="MP School Guide">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="googlebot" content="index, follow">
+
+<link rel="canonical" href="https://mpschoolguide.in/tool/8thpay/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="8वां वेतन आयोग कैलकुलेटर 2026">
+<meta property="og:description" content="अपनी वर्तमान बेसिक सैलरी से 8वें वेतन आयोग की अनुमानित सैलरी की गणना करें।">
+<meta property="og:url" content="https://mpschoolguide.in/tool/8thpay/">
+<meta property="og:site_name" content="MP School Guide">
+<meta property="og:locale" content="hi_IN">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8वां वेतन आयोग कैलकुलेटर">
+<meta name="twitter:description" content="7वें और 8वें वेतन आयोग की अनुमानित सैलरी की तुलना करें।">
+
+<meta name="theme-color" content="#0b3c5d">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "8वां वेतन आयोग कैलकुलेटर",
+  "url": "https://mpschoolguide.in/tool/8thpay/",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "hi-IN",
+  "description": "7वें और 8वें वेतन आयोग के आधार पर अनुमानित बेसिक पे, DA, HRA और मासिक वेतन की तुलना करने वाला कैलकुलेटर।",
+  "publisher": {
+    "@type": "Organization",
+    "name": "MP School Guide",
+    "url": "https://mpschoolguide.in/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  }
+}
+</script>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:#f4f7fb;
+    color:#263445;
+    font-family:Arial,"Noto Sans Devanagari",sans-serif;
+    line-height:1.7;
+}
+
+.main-container{
+    max-width:850px;
+    margin:25px auto;
+    padding:15px;
+}
+
+.page-title{
+    text-align:center;
+    color:#0b3c5d;
+    font-size:27px;
+    margin:15px 0 5px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#64748b;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+.calculator{
+    background:#fff;
+    border:1px solid #dce6ed;
+    border-radius:14px;
+    padding:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.calculator h2{
+    font-size:21px;
+    text-align:center;
+    color:#0b3c5d;
+    margin:0 0 20px;
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:7px;
+    background:#fff;
+    font-size:16px;
+    color:#263445;
+}
+
+input:focus,select:focus{
+    outline:none;
+    border-color:#0b7fab;
+    box-shadow:0 0 0 2px rgba(11,127,171,.12);
+}
+
+.form-row{
+    display:flex;
+    gap:15px;
+}
+
+.form-row .form-group{
+    flex:1;
+    min-width:0;
+}
+
+.calculate-btn{
+    display:block;
+    width:100%;
+    border:0;
+    background:#16834a;
+    color:white;
+    padding:14px;
+    border-radius:8px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.calculate-btn:hover{
+    background:#116a3b;
+}
+
+.reset-btn{
+    width:100%;
+    margin-top:10px;
+    background:#edf2f7;
+    color:#334155;
+    border:1px solid #cbd5e1;
+    padding:11px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+#result{
+    display:none;
+    margin-top:25px;
+}
+
+.result-heading{
+    text-align:center;
+    color:#0b3c5d;
+    font-size:20px;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:420px;
+    margin:15px 0;
+    font-size:14px;
+}
+
+th,td{
+    border:1px solid #dbe3eb;
+    padding:11px 8px;
+    text-align:right;
+}
+
+th:first-child,td:first-child{
+    text-align:left;
+}
+
+th{
+    background:#0b3c5d;
+    color:white;
+}
+
+.total-row{
+    background:#edf7f1;
+    font-weight:bold;
+}
+
+.highlight{
+    color:#16834a;
+    font-weight:bold;
+}
+
+.profit-box{
+    background:#eaf7ef;
+    border-left:5px solid #16834a;
+    padding:17px;
+    border-radius:8px;
+    text-align:center;
+    margin-top:15px;
+}
+
+.profit-box strong{
+    display:block;
+    font-size:25px;
+    color:#16834a;
+}
+
+.disclaimer{
+    background:#fff8e8;
+    border:1px solid #f0dba9;
+    padding:13px;
+    border-radius:8px;
+    font-size:13px;
+    margin-top:18px;
+}
+
+.content-section{
+    background:#fff;
+    margin-top:22px;
+    padding:20px;
+    border-radius:12px;
+    border:1px solid #e2e8f0;
+}
+
+.content-section h2{
+    color:#0b3c5d;
+    font-size:21px;
+    border-bottom:2px solid #e7edf2;
+    padding-bottom:8px;
+}
+
+.content-section h3{
+    color:#264e68;
+    font-size:17px;
+}
+
+.content-section p,
+.content-section li{
+    font-size:15px;
+    color:#475569;
+}
+
+.faq-item{
+    border-bottom:1px solid #e2e8f0;
+    padding:12px 0;
+}
+
+.faq-item:last-child{
+    border-bottom:0;
+}
+
+.faq-item h3{
+    margin:0 0 5px;
+}
+
+.faq-item p{
+    margin:0;
+}
+
+@media(max-width:550px){
+    .main-container{
+        padding:10px;
+        margin:12px auto;
+    }
+
+    .calculator{
+        padding:15px;
+    }
+
+    .page-title{
+        font-size:22px;
+    }
+
+    .form-row{
+        gap:10px;
+    }
+
+    .content-section{
+        padding:15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
 {% include header.html %}
-<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 550px; margin: 20px auto; padding: 25px; border: 2px solid #27ae60; border-radius: 15px; background-color: #ffffff; box-shadow: 0px 10px 20px rgba(0,0,0,0.1);">  
-    <h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">8वां वेतन आयोग अनुमानित गणना </h2>  <div style="margin-bottom: 15px;">  
-    <label style="display: block; margin-bottom: 5px; font-weight: bold;">वर्तमान बेसिक पे (7th Pay):</label>  
-    <input type="number" id="basicPay" placeholder="उदा. 35400" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
-</div>  
 
-<div style="display: flex; gap: 15px; margin-bottom: 15px;">  
-    <div style="flex: 1;">  
-        <label style="display: block; margin-bottom: 5px; font-weight: bold;">7th Pay DA (%):</label>  
-        <input type="number" id="daInput" value="50" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
-    </div>  
-    <div style="flex: 1;">  
-        <label style="display: block; margin-bottom: 5px; font-weight: bold;">फिटमेंट फैक्टर:</label>  
-        <input type="number" id="fitmentInput" value="2.46" step="0.01" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
-    </div>  
-</div>  
+<main class="main-container">
 
-<div style="margin-bottom: 20px;">  
-    <label style="display: block; margin-bottom: 5px; font-weight: bold;">HRA प्रतिशत (चुनें या भरें):</label>  
-    <div style="display: flex; gap: 10px;">  
-        <select id="hraSelect" onchange="document.getElementById('hraInput').value = this.value" style="width: 50%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px;">  
-            <option value="27">27% (X श्रेणी)</option>  
-            <option value="11">11% (Y श्रेणी)</option>  
-            <option value="5">5% (Z श्रेणी)</option>  
-        </select>  
-        <div style="position: relative; width: 50%;">  
-            <input type="number" id="hraInput" value="27" style="width: 100%; padding: 12px; border: 1px solid #bdc3c7; border-radius: 8px; box-sizing: border-box;">  
-            <span style="position: absolute; right: 10px; top: 12px; color: #7f8c8d;">%</span>  
-        </div>  
-    </div>  
-</div>  
+<h1 class="page-title">8वां वेतन आयोग कैलकुलेटर 2026</h1>
 
-<button onclick="calculateSalary()" style="width: 100%; padding: 15px; background-color: #27ae60; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s;">कैलकुलेशन देखें</button>  
+<p class="subtitle">
+MP School Guide – 7वें और 8वें वेतन आयोग की अनुमानित सैलरी की तुलना करें।
+</p>
 
-<div id="result" style="margin-top: 25px; display: none;">  
-    <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px;">  
-        <thead>  
-            <tr style="background-color: #2c3e50; color: white;">  
-                <th style="padding: 12px; border: 1px solid #ddd; text-align: left;">विवरण</th>  
-                <th style="padding: 12px; border: 1px solid #ddd; text-align: right;">7वां वेतन</th>  
-                <th style="padding: 12px; border: 1px solid #ddd; text-align: right;">8वां वेतन</th>  
-            </tr>  
-        </thead>  
-        <tbody>  
-            <tr>  
-                <td style="padding: 10px; border: 1px solid #ddd;">बेसिक पे</td>  
-                <td id="bp7" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
-                <td id="bp8" style="padding: 10px; border: 1px solid #ddd; text-align: right; font-weight: bold; color: #e67e22;"></td>  
-            </tr>  
-            <tr>  
-                <td style="padding: 10px; border: 1px solid #ddd;">DA</td>  
-                <td id="da7_val" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
-                <td style="padding: 10px; border: 1px solid #ddd; text-align: right;">₹0 (Merge)</td>  
-            </tr>  
-            <tr>  
-                <td style="padding: 10px; border: 1px solid #ddd;">HRA</td>  
-                <td id="hra7" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
-                <td id="hra8" style="padding: 10px; border: 1px solid #ddd; text-align: right;"></td>  
-            </tr>  
-            <tr style="background-color: #f1f8ff; font-weight: bold;">  
-                <td style="padding: 12px; border: 1px solid #ddd;">कुल सैलरी</td>  
-                <td id="total7" style="padding: 12px; border: 1px solid #ddd; text-align: right;"></td>  
-                <td id="total8" style="padding: 12px; border: 1px solid #ddd; text-align: right; color: #27ae60;"></td>  
-            </tr>  
-        </tbody>  
-    </table>  
-    <div style="background-color: #e8f6f3; padding: 15px; border-radius: 8px; text-align: center; border-left: 5px solid #27ae60;">  
-        <span style="font-size: 16px; color: #2c3e50;">मासिक सैलरी में शुद्ध लाभ:</span><br>  
-        <strong id="diff" style="font-size: 24px; color: #27ae60;"></strong>  
-    </div>  
+<section class="calculator">
+
+<h2>8th Pay Commission Salary Calculator</h2>
+
+<div class="form-group">
+<label for="basicPay">वर्तमान बेसिक पे (7th Pay Commission)</label>
+<input type="number" id="basicPay" placeholder="उदाहरण: 35400" min="1" step="1">
 </div>
 
-</div>  <script>  
-function calculateSalary() {  
-    let bp7 = parseFloat(document.getElementById('basicPay').value);  
-    let daPercent7 = parseFloat(document.getElementById('daInput').value);  
-    let fitmentFactor = parseFloat(document.getElementById('fitmentInput').value);  
-    let hraPercent = parseFloat(document.getElementById('hraInput').value);  
-  
-    if (isNaN(bp7) || bp7 <= 0) {  
-        alert("कृपया सही बेसिक सैलरी भरें");  
-        return;  
-    }  
-  
-    let hraRate = hraPercent / 100;  
-    let daRate7 = daPercent7 / 100;  
-  
-    // 7th Pay Calculation  
-    let da7_amt = bp7 * daRate7;  
-    let hra7_amt = bp7 * hraRate;  
-    let total7 = bp7 + da7_amt + hra7_amt;  
-  
-    // 8th Pay Calculation  
-    let bp8 = bp7 * fitmentFactor;  
-    let hra8_amt = bp8 * hraRate;  
-    let total8 = bp8 + hra8_amt; // DA becomes 0% as it's merged in Basic  
-  
-    const formatter = new Intl.NumberFormat('en-IN', {  
-        style: 'currency', currency: 'INR', maximumFractionDigits: 0  
-    });  
-  
-    document.getElementById('bp7').innerText = formatter.format(bp7);  
-    document.getElementById('bp8').innerText = formatter.format(bp8);  
-    document.getElementById('da7_val').innerText = formatter.format(da7_amt) + " (" + daPercent7 + "%)";  
-    document.getElementById('hra7').innerText = formatter.format(hra7_amt);  
-    document.getElementById('hra8').innerText = formatter.format(hra8_amt);  
-    document.getElementById('total7').innerText = formatter.format(total7);  
-    document.getElementById('total8').innerText = formatter.format(total8);  
-      
-    document.getElementById('diff').innerText = formatter.format(total8 - total7);  
-    document.getElementById('result').style.display = 'block';  
-}  
-    {% include footer.html %}
+<div class="form-row">
+
+<div class="form-group">
+<label for="daInput">वर्तमान DA (%)</label>
+<input type="number" id="daInput" value="50" min="0" max="200" step="0.01">
+</div>
+
+<div class="form-group">
+<label for="fitmentInput">अनुमानित फिटमेंट फैक्टर</label>
+<input type="number" id="fitmentInput" value="2.46" min="0.01" max="10" step="0.01">
+</div>
+
+</div>
+
+<div class="form-group">
+<label for="hraSelect">HRA श्रेणी चुनें</label>
+
+<select id="hraSelect">
+<option value="27">27% – उदाहरण X श्रेणी</option>
+<option value="11">11% – उदाहरण Y श्रेणी</option>
+<option value="5">5% – उदाहरण Z श्रेणी</option>
+<option value="custom">अन्य प्रतिशत स्वयं भरें</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="hraInput">HRA प्रतिशत (%)</label>
+<input type="number" id="hraInput" value="27" min="0" max="100" step="0.01">
+</div>
+
+<button type="button" class="calculate-btn" onclick="calculateSalary()">
+सैलरी की गणना करें
+</button>
+
+<button type="button" class="reset-btn" onclick="resetCalculator()">
+रीसेट करें
+</button>
+
+<div id="result" aria-live="polite">
+
+<h3 class="result-heading">आपकी अनुमानित सैलरी का विवरण</h3>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>विवरण</th>
+<th>7वां वेतन</th>
+<th>8वां वेतन</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>बेसिक पे</td>
+<td id="bp7"></td>
+<td id="bp8" class="highlight"></td>
+</tr>
+
+<tr>
+<td>DA</td>
+<td id="da7_val"></td>
+<td>₹0*</td>
+</tr>
+
+<tr>
+<td>HRA</td>
+<td id="hra7"></td>
+<td id="hra8"></td>
+</tr>
+
+<tr class="total-row">
+<td>कुल अनुमानित वेतन</td>
+<td id="total7"></td>
+<td id="total8" class="highlight"></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="profit-box">
+मासिक वेतन में अनुमानित अंतर
+<strong id="diff"></strong>
+<span id="diffText"></span>
+</div>
+
+<p class="disclaimer">
+*यह गणना केवल उदाहरण के लिए है। इसमें 8वें वेतन आयोग के लिए DA को शून्य मानकर और दिए गए फिटमेंट फैक्टर से नया बेसिक पे निकालकर तुलना की गई है। वास्तविक वेतन, DA, HRA और अन्य भत्ते आधिकारिक नियमों एवं सरकारी आदेशों पर निर्भर करेंगे।
+</p>
+
+</div>
+
+</section>
+
+<!-- यहां AdSense विज्ञापन यूनिट का कोड लगाया जा सकता है -->
+
+<section class="content-section">
+
+<h2>8वां वेतन आयोग क्या है?</h2>
+
+<p>
+8वां केंद्रीय वेतन आयोग केंद्र सरकार के कर्मचारियों और पेंशनभोगियों के वेतन, भत्तों और पेंशन से संबंधित सिफारिशें तैयार करने के लिए गठित आयोग है। इसके माध्यम से कर्मचारियों के वेतन ढांचे में संभावित बदलावों का आकलन किया जाता है।
+</p>
+
+<p>
+कर्मचारियों के बीच नए वेतन आयोग, फिटमेंट फैक्टर, न्यूनतम बेसिक पे और संभावित वेतन वृद्धि को लेकर काफी रुचि रहती है। इस कैलकुलेटर की सहायता से आप अलग-अलग फिटमेंट फैक्टर दर्ज करके अनुमानित वेतन की गणना कर सकते हैं।
+</p>
+
+<h2>8th Pay Commission Calculator कैसे इस्तेमाल करें?</h2>
+
+<ol>
+<li>अपना वर्तमान 7वें वेतन आयोग का बेसिक पे दर्ज करें।</li>
+<li>वर्तमान DA प्रतिशत भरें।</li>
+<li>अपनी आवश्यकता के अनुसार अनुमानित फिटमेंट फैक्टर दर्ज करें।</li>
+<li>HRA प्रतिशत चुनें या स्वयं दर्ज करें।</li>
+<li>सैलरी की गणना करें बटन पर क्लिक करें।</li>
+<li>आपके सामने दोनों वेतन संरचनाओं की तुलना आ जाएगी।</li>
+</ol>
+
+<h2>फिटमेंट फैक्टर क्या होता है?</h2>
+
+<p>
+फिटमेंट फैक्टर एक गुणांक होता है जिसका उपयोग पुराने बेसिक वेतन के आधार पर संशोधित बेसिक वेतन की गणना के लिए किया जाता है। उदाहरण के लिए, यदि वर्तमान बेसिक पे ₹30,000 है और केवल उदाहरण के लिए फिटमेंट फैक्टर 2.00 लिया जाए, तो गणितीय रूप से नया अनुमानित बेसिक पे ₹60,000 होगा।
+</p>
+
+<h2>महत्वपूर्ण सूचना</h2>
+
+<p>
+यह कैलकुलेटर केवल शैक्षणिक और सामान्य जानकारी के उद्देश्य से बनाया गया है। इसमें उपलब्ध फिटमेंट फैक्टर और HRA प्रतिशत उपयोगकर्ता द्वारा बदले जा सकते हैं। यहां दिखाई गई गणना को आधिकारिक वेतन निर्धारण, सरकारी आदेश या वास्तविक वेतन की गारंटी न माना जाए। वास्तविक वेतन के लिए संबंधित विभाग द्वारा जारी आधिकारिक आदेश देखें।
+</p>
+
+</section>
+
+<section class="content-section">
+
+<h2>अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+
+<div class="faq-item">
+<h3>1. 8वां वेतन आयोग कैलकुलेटर क्या है?</h3>
+<p>यह एक ऑनलाइन टूल है जिसकी मदद से वर्तमान बेसिक पे और अनुमानित फिटमेंट फैक्टर के आधार पर संभावित नया बेसिक पे और वेतन अंतर निकाला जा सकता है।</p>
+</div>
+
+<div class="faq-item">
+<h3>2. फिटमेंट फैक्टर को बदला जा सकता है?</h3>
+<p>हां, इस कैलकुलेटर में आप अपनी आवश्यकता के अनुसार फिटमेंट फैक्टर दर्ज कर सकते हैं।</p>
+</div>
+
+<div class="faq-item">
+<h3>3. क्या यह 8वें वेतन आयोग की आधिकारिक सैलरी है?</h3>
+<p>नहीं, यह केवल अनुमानित गणना है। वास्तविक वेतन आधिकारिक वेतन नियमों और सरकारी आदेशों के अनुसार निर्धारित होगा।</p>
+</div>
+
+<div class="faq-item">
+<h3>4. क्या इस कैलकुलेटर का उपयोग मोबाइल पर कर सकते हैं?</h3>
+<p>हां, यह कैलकुलेटर मोबाइल, टैबलेट और कंप्यूटर पर इस्तेमाल किया जा सकता है।</p>
+</div>
+
+<div class="faq-item">
+<h3>5. क्या इस कैलकुलेटर का उपयोग मुफ्त है?</h3>
+<p>हां, MP School Guide पर यह कैलकुलेटर निःशुल्क उपलब्ध है।</p>
+</div>
+
+</section>
+
+</main>
+
+{% include footer.html %}
+
+<script>
+const hraSelect = document.getElementById("hraSelect");
+const hraInput = document.getElementById("hraInput");
+
+hraSelect.addEventListener("change", function(){
+
+    if(this.value !== "custom"){
+        hraInput.value = this.value;
+    }
+
+});
+
+hraInput.addEventListener("input", function(){
+    hraSelect.value = "custom";
+});
+
+function calculateSalary(){
+
+    const bp7 = Number(document.getElementById("basicPay").value);
+    const daPercent7 = Number(document.getElementById("daInput").value);
+    const fitmentFactor = Number(document.getElementById("fitmentInput").value);
+    const hraPercent = Number(hraInput.value);
+
+    if(!Number.isFinite(bp7) || bp7 <= 0){
+        alert("कृपया सही बेसिक पे दर्ज करें।");
+        return;
+    }
+
+    if(!Number.isFinite(daPercent7) || daPercent7 < 0 || daPercent7 > 200){
+        alert("कृपया सही DA प्रतिशत दर्ज करें।");
+        return;
+    }
+
+    if(!Number.isFinite(fitmentFactor) || fitmentFactor <= 0 || fitmentFactor > 10){
+        alert("कृपया सही फिटमेंट फैक्टर दर्ज करें।");
+        return;
+    }
+
+    if(!Number.isFinite(hraPercent) || hraPercent < 0 || hraPercent > 100){
+        alert("कृपया सही HRA प्रतिशत दर्ज करें।");
+        return;
+    }
+
+    const da7 = bp7 * daPercent7 / 100;
+    const hra7 = bp7 * hraPercent / 100;
+    const total7 = bp7 + da7 + hra7;
+
+    const bp8 = bp7 * fitmentFactor;
+    const hra8 = bp8 * hraPercent / 100;
+    const total8 = bp8 + hra8;
+
+    const formatter = new Intl.NumberFormat("en-IN",{
+        style:"currency",
+        currency:"INR",
+        maximumFractionDigits:0
+    });
+
+    function setValue(id,value){
+        document.getElementById(id).textContent = formatter.format(value);
+    }
+
+    setValue("bp7",bp7);
+    setValue("bp8",bp8);
+    setValue("da7_val",da7);
+    setValue("hra7",hra7);
+    setValue("hra8",hra8);
+    setValue("total7",total7);
+    setValue("total8",total8);
+
+    const difference = total8 - total7;
+
+    document.getElementById("diff").textContent =
+        (difference >= 0 ? "+" : "-") + formatter.format(Math.abs(difference));
+
+    document.getElementById("diffText").textContent =
+        difference >= 0
+        ? "मासिक अनुमानित वृद्धि"
+        : "मासिक अनुमानित कमी";
+
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("result").scrollIntoView({
+        behavior:"smooth",
+        block:"nearest"
+    });
+
+}
+
+function resetCalculator(){
+
+    document.getElementById("basicPay").value = "";
+    document.getElementById("daInput").value = "50";
+    document.getElementById("fitmentInput").value = "2.46";
+
+    hraSelect.value = "27";
+    hraInput.value = "27";
+
+    document.getElementById("result").style.display = "none";
+
+}
 </script>
+
+</body>
+</html>
