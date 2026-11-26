@@ -1,105 +1,386 @@
 ---
 layout: null
-title: MP School Guide
+title: MP School Guide Grade Chart
 ---
 
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-    {% include header.html %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MP School Guide – Grade Chart</title>
+
+<!-- SEO TITLE -->
+<title>Grade Chart & Calculator | MP School Guide</title>
+
+<!-- SEO META -->
+<meta name="description" content="20, 40, 60, 70, 80, 100, 150, 200, 240, 360, 400 और 600 अंकों का ग्रेड चार्ट देखें। प्राप्त अंकों से A+, A, B+, B, C+, C, D और E ग्रेड तुरंत निकालें।">
+
+<meta name="keywords" content="Grade Calculator, Grade Chart, अंकवार ग्रेड चार्ट, ग्रेड कैलकुलेटर, MP School Guide, शैक्षिक मूल्यांकन, परीक्षा ग्रेड, A+ Grade Calculator">
+
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="MP School Guide">
+<meta name="theme-color" content="#0b3c5d">
+
+<!-- CANONICAL: यहां अपने पेज का वास्तविक URL डालें -->
+<link rel="canonical" href="https://mpschoolguide.in/">
+
+<!-- OPEN GRAPH -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grade Chart & Calculator | MP School Guide">
+<meta property="og:description" content="अंकवार ग्रेड चार्ट और ऑनलाइन ग्रेड कैलकुलेटर। प्राप्त अंक दर्ज करके अपना ग्रेड तुरंत जानें।">
+<meta property="og:url" content="https://mpschoolguide.in/">
+<meta property="og:site_name" content="MP School Guide">
+<meta property="og:locale" content="hi_IN">
+
+<!-- TWITTER CARD -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Grade Chart & Calculator | MP School Guide">
+<meta name="twitter:description" content="ऑनलाइन अंकवार ग्रेड चार्ट और ग्रेड कैलकुलेटर।">
+
+<!-- GOOGLE ADSENSE -->
+<!-- अपनी वास्तविक AdSense Publisher ID यहां लगाएं -->
+<!-- यदि वेबसाइट पर AdSense का कोड पहले से लगा है तो दोबारा न लगाएं -->
+
+<!--
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+crossorigin="anonymous"></script>
+-->
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Grade Calculator - MP School Guide",
+  "url": "https://mpschoolguide.in/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "hi-IN",
+  "description": "अंकवार ग्रेड चार्ट और प्राप्त अंकों से ग्रेड निकालने का ऑनलाइन कैलकुलेटर।",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
+  }
+}
+</script>
+
+<!-- FAQ SCHEMA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "ग्रेड कैलकुलेटर का उपयोग कैसे करें?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "कुल अंक चुनें और प्राप्त अंक दर्ज करें। कैलकुलेटर आपके प्राप्त अंकों के प्रतिशत के आधार पर ग्रेड दिखाएगा।"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ग्रेड चार्ट किन कुल अंकों के लिए उपलब्ध है?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ग्रेड चार्ट 20, 40, 60, 70, 80, 100, 150, 200, 240, 360, 400 और 600 कुल अंकों के लिए उपलब्ध है।"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "क्या मोबाइल से ग्रेड निकाल सकते हैं?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "हाँ, MP School Guide ग्रेड कैलकुलेटर मोबाइल, टैबलेट और कंप्यूटर पर इस्तेमाल किया जा सकता है।"
+      }
+    }
+  ]
+}
+</script>
 
 <style>
+*{
+    box-sizing:border-box;
+}
+
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#fff6ee;
     margin:0;
     padding:10px;
+    color:#222;
 }
-h2,h3{text-align:center;margin:8px 0;}
+
+.main-container{
+    max-width:1100px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    font-size:25px;
+    color:#0b3c5d;
+}
+
+h2,h3{
+    text-align:center;
+    margin:10px 0;
+}
+
+.page-title{
+    background:#0b3c5d;
+    color:white;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.page-title h1{
+    color:white;
+    margin:5px;
+}
+
+.page-title p{
+    margin:5px 0;
+    text-align:center;
+}
+
 .notice{
     text-align:center;
     font-size:14px;
     color:#b30000;
-    margin-bottom:5px;
+    margin:10px 0;
 }
+
 .table-box{
     overflow-x:auto;
-    border:1px solid #000;
-    background:#fff;
+    border:1px solid #999;
+    background:white;
+    border-radius:8px;
 }
+
 table{
     border-collapse:collapse;
+    width:100%;
     min-width:900px;
 }
+
 th,td{
-    border:1px solid #000;
-    padding:6px;
+    border:1px solid #777;
+    padding:8px;
     text-align:center;
     font-size:14px;
 }
+
 th{
     background:#f2d6c9;
     position:sticky;
     top:0;
 }
+
+tr:nth-child(even){
+    background:#fffaf5;
+}
+
 .box{
     background:#ffe8da;
     padding:15px;
     margin-top:20px;
-    border:1px solid #000;
+    border:1px solid #d5a28a;
+    border-radius:10px;
 }
+
 select,input,button{
     width:100%;
-    padding:8px;
+    padding:12px;
     margin-top:8px;
     font-size:16px;
+    border-radius:6px;
 }
+
+select,input{
+    border:1px solid #aaa;
+    background:#fff;
+}
+
 button{
     background:#b30000;
     color:#fff;
     border:none;
     cursor:pointer;
+    font-weight:bold;
 }
+
+button:hover{
+    background:#850000;
+}
+
 .result{
-    margin-top:10px;
-    font-size:18px;
+    margin-top:12px;
+    font-size:22px;
     font-weight:bold;
     color:#006400;
     text-align:center;
+    background:#fff;
+    border-radius:8px;
+    padding:12px;
 }
-@media (min-width:768px){
-    select,input,button{width:50%;}
+
+.grade-info-box{
+    background:linear-gradient(135deg,#e3f2fd,#ffffff);
+    border-left:6px solid #2196f3;
+    padding:15px;
+    border-radius:10px;
+    margin:15px 0;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.grade-info-box h3{
+    color:#0d47a1;
+}
+
+.grade-info-box ul{
+    padding-left:20px;
+}
+
+.grade-info-box li{
+    margin-bottom:8px;
+    line-height:1.7;
+}
+
+.note-box{
+    background:#fff3cd;
+    border-left:5px solid #ff9800;
+    padding:12px;
+    border-radius:8px;
+    margin-top:12px;
+    color:#856404;
+    font-size:14px;
+}
+
+.content-box{
+    background:#fff;
+    padding:15px;
+    margin-top:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    line-height:1.8;
+}
+
+.content-box h2,
+.content-box h3{
+    color:#0b3c5d;
+}
+
+.faq{
+    margin-top:20px;
+    background:#fff;
+    padding:15px;
+    border-radius:10px;
+}
+
+.faq details{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+.faq summary{
+    cursor:pointer;
+    font-weight:bold;
+    color:#0b3c5d;
+}
+
+.faq p{
+    line-height:1.7;
+}
+
+.links-box{
+    background:#fff;
+    padding:15px;
+    margin-top:20px;
+    border-radius:10px;
+}
+
+.links-box a{
+    color:#0645ad;
+    display:block;
+    margin:12px 0;
+    line-height:1.6;
+}
+
+.ad-slot{
+    width:100%;
+    min-height:100px;
+    margin:20px auto;
+    text-align:center;
+    overflow:hidden;
+}
+
+.ad-label{
+    font-size:11px;
+    color:#999;
+    margin-bottom:5px;
+}
+
+@media(max-width:600px){
+    body{
+        padding:7px;
+    }
+
+    h1{
+        font-size:21px;
+    }
+
+    .box,.content-box,.grade-info-box{
+        padding:12px;
+    }
+
+    .result{
+        font-size:20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<h2>MP School Guide</h2>
-<h3>शैक्षिक एवं सह-शैक्षिक मूल्यांकन<br>अंकवार ग्रेड चार्ट</h3>
+{% include header.html %}
 
-<div class="notice">⬅️ टेबल देखने के लिए दाएँ-बाएँ स्क्रॉल करें ➡️</div>
+<div class="main-container">
+
+<div class="page-title">
+<h1>MP School Guide</h1>
+<p>शैक्षिक एवं सह-शैक्षिक मूल्यांकन</p>
+<p><strong>अंकवार ग्रेड चार्ट एवं ग्रेड कैलकुलेटर</strong></p>
+</div>
+
+<!-- ADSENSE SLOT 1 : TOP -->
+<div class="ad-slot">
+<div class="ad-label">Advertisement</div>
+
+<!-- यहां AdSense Display Ad Unit Code लगाएं -->
+
+</div>
+
+<div class="notice">
+⬅️ पूरा ग्रेड चार्ट देखने के लिए टेबल को दाएँ-बाएँ स्क्रॉल करें ➡️
+</div>
 
 <div class="table-box">
 <table>
 <tr>
-<th>कुल अंक</th><th>A+</th><th>A</th><th>B+</th><th>B</th>
+<th>कुल अंक</th>
+<th>A+</th><th>A</th><th>B+</th><th>B</th>
 <th>C+</th><th>C</th><th>D</th><th>E</th>
 </tr>
 
 <tr><td>20</td><td>17–20</td><td>15–16</td><td>13–14</td><td>11–12</td><td>10</td><td>9</td><td>7–8</td><td>0–6</td></tr>
 <tr><td>40</td><td>34–40</td><td>30–33</td><td>26–29</td><td>22–25</td><td>20–21</td><td>18–19</td><td>13–17</td><td>0–12</td></tr>
 <tr><td>60</td><td>51–60</td><td>45–50</td><td>40–44</td><td>34–39</td><td>31–33</td><td>28–30</td><td>20–27</td><td>0–19</td></tr>
-
-<!-- ✅ 70 Added -->
 <tr><td>70</td><td>60–70</td><td>53–59</td><td>46–52</td><td>40–45</td><td>36–39</td><td>33–35</td><td>23–32</td><td>0–22</td></tr>
-
-<!-- ✅ 80 Added -->
 <tr><td>80</td><td>68–80</td><td>60–67</td><td>53–59</td><td>45–52</td><td>41–44</td><td>37–40</td><td>27–36</td><td>0–26</td></tr>
-
 <tr><td>100</td><td>85–100</td><td>75–84</td><td>66–74</td><td>56–65</td><td>51–55</td><td>46–50</td><td>33–45</td><td>0–32</td></tr>
 <tr><td>150</td><td>128–150</td><td>113–127</td><td>99–112</td><td>84–98</td><td>77–83</td><td>69–76</td><td>50–68</td><td>0–49</td></tr>
 <tr><td>200</td><td>170–200</td><td>150–169</td><td>132–149</td><td>112–131</td><td>102–111</td><td>92–101</td><td>66–91</td><td>0–65</td></tr>
@@ -108,127 +389,213 @@ button{
 <tr><td>400</td><td>340–400</td><td>300–339</td><td>264–299</td><td>224–263</td><td>204–223</td><td>184–203</td><td>132–183</td><td>0–131</td></tr>
 <tr><td>600</td><td>511–600</td><td>450–510</td><td>396–449</td><td>336–395</td><td>306–335</td><td>276–305</td><td>198–275</td><td>0–197</td></tr>
 </table>
+</table>
 </div>
 
-<div class="box">
-<h3>🔍 Grade Calculator</h3>
+<!-- ADSENSE SLOT 2 : AFTER TABLE -->
+<div class="ad-slot">
+<div class="ad-label">Advertisement</div>
 
-<label>कुल अंक चुनें</label>
+<!-- यहां दूसरा AdSense विज्ञापन यूनिट कोड लगाएं -->
+
+</div>
+
+<!-- GRADE CALCULATOR -->
+<div class="box" id="grade-calculator">
+
+<h2>🧮 ग्रेड कैलकुलेटर</h2>
+<p style="text-align:center;">
+प्राप्त अंक दर्ज करें और अपना ग्रेड तुरंत जानें।
+</p>
+
+<label for="total"><strong>कुल अंक चुनें</strong></label>
+
 <select id="total">
-<option value="">--Select--</option>
-<option>20</option>
-<option>40</option>
-<option>60</option>
-<option>70</option>
-<option>80</option>
-<option>100</option>
-<option>150</option>
-<option>200</option>
-<option>240</option>
-<option>360</option>
-<option>400</option>
-<option>600</option>
+<option value="">-- कुल अंक चुनें --</option>
+<option value="20">20</option>
+<option value="40">40</option>
+<option value="60">60</option>
+<option value="70">70</option>
+<option value="80">80</option>
+<option value="100">100</option>
+<option value="150">150</option>
+<option value="200">200</option>
+<option value="240">240</option>
+<option value="360">360</option>
+<option value="400">400</option>
+<option value="600">600</option>
 </select>
 
-<label>प्राप्त अंक</label>
-<input type="number" id="marks" placeholder="अंक दर्ज करें">
+<label for="marks"><strong>प्राप्त अंक</strong></label>
+<input type="number" id="marks" min="0" step="1" placeholder="प्राप्त अंक दर्ज करें">
 
-<button onclick="findGrade()">Grade देखें</button>
-<div class="result" id="output"></div>
+<div class="result" id="output" aria-live="polite">
+आपका ग्रेड यहां दिखाई देगा
+</div>
+
+<button type="button" onclick="findGrade()">ग्रेड देखें</button>
+<button type="button" onclick="resetCalculator()" style="background:#555;">
+रीसेट करें
+</button>
+
+</div>
+
+<!-- SEO CONTENT -->
+<div class="content-box">
+
+<h2>ग्रेड चार्ट क्या है?</h2>
+
+<p>
+ग्रेड चार्ट विद्यार्थियों के प्राप्त अंकों के आधार पर उनके शैक्षिक मूल्यांकन को ग्रेड में प्रदर्शित करने का एक सरल तरीका है। इसकी सहायता से शिक्षक एवं विद्यार्थी प्राप्त अंकों के अनुसार A+, A, B+, B, C+, C, D और E जैसे ग्रेड आसानी से देख सकते हैं।
+</p>
+
+<p>
+MP School Guide का यह ग्रेड चार्ट विभिन्न कुल अंकों के लिए तैयार किया गया है। इसमें 20 से 600 तक के कुल अंकों की उपलब्ध श्रेणियों को शामिल किया गया है। ऑनलाइन ग्रेड कैलकुलेटर की सहायता से प्राप्त अंक दर्ज करके ग्रेड तुरंत देखा जा सकता है।
+</p>
+
+<h3>ग्रेड कैलकुलेटर का उपयोग कैसे करें?</h3>
+
+<ul>
+<li>ड्रॉपडाउन से परीक्षा के कुल अंक चुनें।</li>
+<li>विद्यार्थी के प्राप्त अंक दर्ज करें।</li>
+<li>ग्रेड देखें बटन दबाएं या अंक बदलते ही ग्रेड प्राप्त करें।</li>
+<li>ग्रेड चार्ट से अंक की सीमा का मिलान भी कर सकते हैं।</li>
+</ul>
+
+<p>
+यह टूल शिक्षकों, विद्यार्थियों और शैक्षिक मूल्यांकन से जुड़े उपयोगकर्ताओं के लिए उपयोगी है। किसी आधिकारिक मूल्यांकन में उपयोग करने से पहले संबंधित विभाग के निर्धारित ग्रेड नियमों से मिलान अवश्य करें।
+</p>
+
+</div>
+
+<!-- ADSENSE SLOT 3 -->
+<div class="ad-slot">
+<div class="ad-label">Advertisement</div>
+
+<!-- यहां तीसरा AdSense विज्ञापन यूनिट कोड लगाएं -->
+
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+
+<h2>अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+
+<details>
+<summary>ग्रेड कैलकुलेटर कैसे काम करता है?</summary>
+<p>कुल अंक और प्राप्त अंक दर्ज करने पर प्राप्त प्रतिशत के आधार पर ग्रेड निर्धारित किया जाता है।</p>
+</details>
+
+<details>
+<summary>क्या इस कैलकुलेटर से मोबाइल पर ग्रेड निकाल सकते हैं?</summary>
+<p>हाँ, यह कैलकुलेटर Android मोबाइल, टैबलेट और कंप्यूटर पर उपयोग किया जा सकता है।</p>
+</details>
+
+<details>
+<summary>यह ग्रेड चार्ट किन अंकों के लिए उपलब्ध है?</summary>
+<p>20, 40, 60, 70, 80, 100, 150, 200, 240, 360, 400 और 600 कुल अंकों के लिए ग्रेड चार्ट उपलब्ध है।</p>
+</details>
+
+<details>
+<summary>क्या ग्रेड कैलकुलेटर मुफ्त है?</summary>
+<p>हाँ, MP School Guide पर उपलब्ध इस ग्रेड कैलकुलेटर का उपयोग मुफ्त किया जा सकता है।</p>
+</details>
+
+</div>
+
+<!-- RELATED LINKS -->
+<div class="links-box">
+
+<h3>MP School Guide की उपयोगी जानकारी</h3>
+
+<a href="https://mpschoolguide.in/">
+🏠 MP School Guide होम पेज</a>
+
+<a href="https://schoolguidemp.blogspot.com/p/calendar.html">
+📅 मध्यप्रदेश शासकीय अवकाश कैलेंडर</a>
+
+<a href="https://schoolguidemp.blogspot.com/p/home-page.html?m=1">
+📚 शिक्षा संबंधी उपयोगी सामग्री</a>
+
+<a href="https://schoolguidemp.blogspot.com/">
+📰 ताजा शिक्षा समाचार एवं अपडेट</a>
+
+</div>
+
 </div>
 
 <script>
+const totalInput = document.getElementById("total");
+const marksInput = document.getElementById("marks");
+const output = document.getElementById("output");
+
 function findGrade(){
- let t=parseInt(total.value), m=parseInt(marks.value);
- if(isNaN(t)||isNaN(m)){output.innerHTML="कृपया सही जानकारी भरें";return;}
- let p=(m/t)*100, g="";
- if(p>=85)g="A+";
- else if(p>=75)g="A";
- else if(p>=66)g="B+";
- else if(p>=56)g="B";
- else if(p>=51)g="C+";
- else if(p>=46)g="C";
- else if(p>=33)g="D";
- else g="E";
- output.innerHTML="आपका Grade : "+g;
-}
-</script> 
-  <style>
-.grade-info-box {
-  background: linear-gradient(135deg, #e3f2fd, #ffffff);
-  border-left: 6px solid #2196f3;
-  padding: 15px;
-  border-radius: 10px;
-  font-family: 'Segoe UI', sans-serif;
-  margin: 15px 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
 
-.grade-info-box h3 {
-  color: #0d47a1;
-  margin-bottom: 10px;
-}
+    let total = Number(totalInput.value);
+    let marks = Number(marksInput.value);
 
-.grade-info-box ul {
-  padding-left: 18px;
-}
+    if(!totalInput.value || marksInput.value === ""){
+        output.innerHTML = "⚠️ कृपया कुल अंक और प्राप्त अंक दर्ज करें";
+        output.style.color = "#b30000";
+        return;
+    }
 
-.grade-info-box li {
-  margin-bottom: 8px;
-  line-height: 1.6;
-}
+    if(marks < 0){
+        output.innerHTML = "⚠️ प्राप्त अंक शून्य से कम नहीं हो सकते";
+        output.style.color = "#b30000";
+        return;
+    }
 
-.note-box {
-  background-color: #fff3cd;
-  border-left: 5px solid #ff9800;
-  padding: 10px;
-  border-radius: 8px;
-  margin-top: 10px;
-  color: #856404;
-  font-size: 14px;
+    if(marks > total){
+        output.innerHTML = "⚠️ प्राप्त अंक कुल अंकों से अधिक नहीं हो सकते";
+        output.style.color = "#b30000";
+        return;
+    }
+
+    let percentage = (marks / total) * 100;
+    let grade = "";
+
+    if(percentage >= 85) grade = "A+";
+    else if(percentage >= 75) grade = "A";
+    else if(percentage >= 66) grade = "B+";
+    else if(percentage >= 56) grade = "B";
+    else if(percentage >= 51) grade = "C+";
+    else if(percentage >= 46) grade = "C";
+    else if(percentage >= 33) grade = "D";
+    else grade = "E";
+
+    output.innerHTML =
+        "प्राप्त अंक: " + marks + " / " + total +
+        "<br>प्रतिशत: " + percentage.toFixed(2) + "%" +
+        "<br>आपका Grade: " + grade;
+
+    output.style.color = "#006400";
 }
 
-@media(max-width: 600px){
-  .grade-info-box {
-    font-size: 14px;
-  }
+function resetCalculator(){
+    totalInput.value = "";
+    marksInput.value = "";
+    output.innerHTML = "आपका ग्रेड यहां दिखाई देगा";
+    output.style.color = "#006400";
 }
-</style>
 
-<div class="grade-info-box">
-  <h3>📊 ग्रेड चार्ट और ग्रेड कैलकुलेटर का उपयोग कैसे करें</h3>
-  
-  <ul>
-    <li>📱 यदि आप यह पेज मोबाइल में देख रहे हैं, तो पूरे ग्रेड चार्ट को देखने के लिए पेज को दाएं-बाएं (Scroll) करें।</li>
-    
-    <li>🧮 ग्रेड कैलकुलेटर का उपयोग करने के लिए:
-      <ul>
-        <li>सबसे पहले <b>कुल अंक (Total Marks)</b> का चयन करें।</li>
-        <li>इसके बाद नीचे <b>प्राप्त अंक (Obtained Marks)</b> दर्ज करें।</li>
-        <li>जैसे ही आप अंक दर्ज करेंगे, नीचे आपका <b>ग्रेड स्वतः दिखाई देगा</b>।</li>
-      </ul>
-    </li>
-  </ul>
+/* AUTO CALCULATE ON CHANGE */
+totalInput.addEventListener("change", function(){
+    if(marksInput.value !== ""){
+        findGrade();
+    }
+});
 
-  <div class="note-box">
-    ⚠️ <b>महत्वपूर्ण नोट:</b><br>
-    यदि आप कुल अंक से अधिक प्राप्त अंक दर्ज करते हैं, तो कैलकुलेटर <b>A+ ग्रेड</b> दिखाएगा।<br>
-    इसलिए कृपया <b>कुल अंक का चयन सावधानीपूर्वक करें</b>।
-  </div>
-  </div>
-  <p></p>
-  
-<a href="https://schoolguidemp.blogspot.com/p/calendar.html" 
-style="color: blue;">
-मध्यप्रदेश शासन के राजपत्र अनुसार शासकीय अवकाश देखने के लिए क्लिक करे
-</a><br><br>
-<a href="https://schoolguidemp.blogspot.com/p/home-page.html?m=1" style="color:blue;">
- mp school guide के होम पेज पर जाए और विभिन्न उपयोगी सामग्री एक ही जगह देखे इस लाइन पर क्लिक करे 
-</a><br><br>
+marksInput.addEventListener("input", function(){
+    if(totalInput.value !== "" && marksInput.value !== ""){
+        findGrade();
+    }else{
+        output.innerHTML = "कुल अंक चुनें और प्राप्त अंक दर्ज करें";
+    }
+});
+</script>
 
-  
-<a href="https://schoolguidemp.blogspot.com" style="color:red;">
-    ताजा ब्लॉग देखने के लिए क्लिक करे</a> <br><br>
+{% include footer.html %}
+
 </body>
-    {% include footer.html %}
 </html>
