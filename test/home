@@ -1,0 +1,589 @@
+
+---
+layout: null
+title: MP School Guide
+---
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#007bff">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MP School Guide</title>
+</head>
+
+<body class="bg-slate-50">
+
+  {% include header.html %}
+
+  <!-- सूचना बॉक्स -->
+  <div style="
+    display:block;
+    margin:30px 15px;
+    max-width:550px;
+    width:calc(100% - 30px);
+    background-color:#ffffff;
+    border:2px solid #ff6600;
+    border-radius:12px;
+    padding:10px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.15);
+    font-family:sans-serif;
+    position:relative;
+    overflow:hidden;
+    box-sizing:border-box;
+    clear:both;
+  ">
+
+    <!-- वाटरमार्क -->
+    <div style="
+      position:absolute;
+      top:55%;
+      left:50%;
+      transform:translate(-50%,-50%);
+      width:280px;
+      height:280px;
+      opacity:0.15;
+      filter:blur(2px);
+      z-index:1;
+      pointer-events:none;
+    ">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+      style="width:100%;height:100%;object-fit:contain;">
+    </div>
+
+    <!-- मुख्य कंटेंट -->
+    <div style="position:relative;z-index:2;width:100%;">
+
+      <!-- हेडर -->
+      <table style="
+        width:100%;
+        border-bottom:3px solid #ff6600;
+        padding-bottom:8px;
+        margin-bottom:15px;
+        border-collapse:collapse;
+      ">
+        <tr>
+          <td style="text-align:left;vertical-align:middle;width:60px;">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+            style="height:45px;width:auto;object-fit:contain;">
+          </td>
+
+          <td style="
+            text-align:center;
+            font-size:22px;
+            color:#333;
+            font-weight:bold;
+            vertical-align:middle;
+          ">
+            सूचना / <span style="color:#ff6600;">अपडेट</span>
+          </td>
+
+          <td style="text-align:right;vertical-align:middle;width:60px;">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+            style="height:45px;width:auto;object-fit:contain;">
+          </td>
+        </tr>
+      </table>
+
+      <!-- Dynamic सूचना शीर्षक -->
+      <div id="noticeTitle" style="
+        color:#dd6b20;
+        font-weight:bold;
+        font-size:17px;
+        margin-top:20px;
+        margin-bottom:12px;
+        text-align:center;
+      ">
+        सूचना लोड हो रही है...
+      </div>
+
+      <!-- Dynamic सूचना विवरण -->
+      <div id="noticeDescription" style="
+        font-size:15px;
+        line-height:1.7;
+        color:#2d3748;
+        text-align:justify;
+        margin-bottom:15px;
+        white-space:pre-line;
+        overflow-wrap:anywhere;
+      ">
+        कृपया प्रतीक्षा करें...
+      </div>
+
+      <!-- फुटर -->
+      <div style="
+        margin-top:20px;
+        border-top:2px dashed #ff6600;
+        padding-top:10px;
+        text-align:center;
+        font-size:14px;
+        color:#4a5568;
+        font-weight:bold;
+      ">
+        ✨ उपयोगी सूचना को साथियों के साथ शेयर करें ✨
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Google Sheets से सूचना प्राप्त करें -->
+  <script>
+  (function () {
+    const API_URL = "https://script.google.com/macros/s/AKfycbwwXxC6cWgL1iua1ZK2xoCaIf2YoO9987jaASsD-5jbT-tJCaHHOIeibhvje6mM8DUn8Q/exec";
+
+    const titleBox = document.getElementById("noticeTitle");
+    const descriptionBox = document.getElementById("noticeDescription");
+
+    window.loadMPNotice = function(data) {
+      if (data && data.title && data.description) {
+        titleBox.textContent = data.title;
+        descriptionBox.textContent = data.description;
+      } else {
+        titleBox.textContent = "कोई नई सूचना उपलब्ध नहीं है";
+        descriptionBox.textContent = "";
+      }
+    };
+
+    const script = document.createElement("script");
+
+    script.src = API_URL +
+      (API_URL.includes("?") ? "&" : "?") +
+      "callback=loadMPNotice&_=" + Date.now();
+
+    script.onerror = function() {
+      titleBox.textContent = "सूचना लोड नहीं हो सकी";
+      descriptionBox.textContent = "कृपया कुछ समय बाद पुनः प्रयास करें।";
+    };
+
+    document.body.appendChild(script);
+  })();
+  </script>
+
+  <!-- MP School Guide Useful Tools -->
+  <style>
+  .mp-tools-section {
+    max-width:550px;
+    width:calc(100% - 30px);
+    margin:20px 15px;
+    font-family:Arial,sans-serif;
+    box-sizing:border-box;
+  }
+
+  .mp-tools-heading {
+    font-size:17px;
+    font-weight:bold;
+    color:#333;
+    margin-bottom:13px;
+    padding-left:3px;
+  }
+
+  .mp-tools-grid {
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+  }
+
+  .mp-tool-item {
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    padding:13px 4px;
+    text-align:center;
+    text-decoration:none !important;
+    color:#333 !important;
+    box-shadow:0 3px 8px rgba(0,0,0,0.06);
+    transition:0.2s;
+  }
+
+  .mp-tool-item:active {
+    transform:scale(0.95);
+  }
+
+  .mp-tool-icon {
+    width:45px;
+    height:45px;
+    margin:0 auto 8px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+  }
+
+  .mp-tool-name {
+    font-size:12px;
+    font-weight:bold;
+    line-height:1.4;
+    display:block;
+  }
+
+  @media(max-width:380px) {
+    .mp-tools-grid {
+      gap:6px;
+    }
+    .mp-tool-item {
+      padding:10px 2px;
+    }
+    .mp-tool-name {
+      font-size:10px;
+    }
+  }
+  </style>
+
+  <!-- उपयोगी टूल्स -->
+  <div class="mp-tools-section">
+    <div class="mp-tools-heading">
+      🛠️ उपयोगी टूल्स
+    </div>
+
+    <div class="mp-tools-grid">
+
+      <a href="https://mpschoolguide.in/tool/calendar" class="mp-tool-item">
+        <div class="mp-tool-icon" style="background:#fff0e6;">📅</div>
+        <span class="mp-tool-name">Holiday<br>Calendar</span>
+      </a>
+
+      <a href="https://mpschoolguide.in/tool/agecalculator" class="mp-tool-item">
+        <div class="mp-tool-icon" style="background:#e9f2ff;">🎂</div>
+        <span class="mp-tool-name">Age<br>Calculator</span>
+      </a>
+
+      <a href="https://mpschoolguide.in/tool/Da_arrear" class="mp-tool-item">
+        <div class="mp-tool-icon" style="background:#e8f8ed;">💰</div>
+        <span class="mp-tool-name">DA<br>ARREAR</span>
+      </a>
+
+      <a href="https://mpschoolguide.in/tool/grade_calculator" class="mp-tool-item">
+        <div class="mp-tool-icon" style="background:#fff4e5;">📊</div>
+        <span class="mp-tool-name">Grade<br>Calculator</span>
+      </a>
+
+      <a href="https://mpschoolguide.in/tool/8thpay" class="mp-tool-item">
+        <div class="mp-tool-icon" style="background:#eaf2ff;">💹</div>
+        <span class="mp-tool-name">8th Pay<br>Calculator</span>
+      </a>
+
+    </div>
+  </div>
+  <!-- End Useful Tools -->
+
+  <!-- ========================================= -->
+  <!-- AMAZON PRODUCT WIDGET -->
+  <!-- उपयोगी टूल्स के बाद Amazon उत्पाद सेक्शन -->
+  <!-- ========================================= -->
+
+  {% include amazon-products.html %}
+
+  <!-- ========================================= -->
+  <!-- सरकारी पोर्टल एवं मोबाइल ऐप -->
+  <!-- ========================================= -->
+
+  <style>
+  .mp-portal-area {
+    max-width:550px;
+    width:calc(100% - 30px);
+    margin:22px 15px;
+    font-family:Arial,sans-serif;
+    box-sizing:border-box;
+  }
+
+  .mp-section-title {
+    font-size:18px;
+    font-weight:bold;
+    color:#263238;
+    margin-bottom:5px;
+  }
+
+  .mp-section-subtitle {
+    font-size:12px;
+    color:#777;
+    margin-bottom:14px;
+  }
+
+  .mp-portal-grid {
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .mp-portal-card {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 9px;
+    background:#fff;
+    border:1px solid #e5e7eb;
+    border-radius:12px;
+    text-decoration:none !important;
+    color:#263238 !important;
+    box-shadow:0 2px 7px rgba(0,0,0,.05);
+    transition:.2s;
+    min-width:0;
+  }
+
+  .mp-portal-card:active {
+    transform:scale(.97);
+  }
+
+  .mp-portal-icon {
+    width:42px;
+    height:42px;
+    flex-shrink:0;
+    border-radius:10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:23px;
+  }
+
+  .mp-portal-info {
+    min-width:0;
+  }
+
+  .mp-portal-name {
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    line-height:1.4;
+  }
+
+  .mp-portal-desc {
+    display:block;
+    font-size:10px;
+    color:#777;
+    margin-top:3px;
+  }
+
+  .mp-portal-divider {
+    margin:25px 0 18px;
+    border:0;
+    border-top:1px solid #e5e7eb;
+  }
+
+  .mp-app-badge {
+    font-size:9px;
+    color:#16803d;
+    background:#e9f8ed;
+    padding:3px 5px;
+    border-radius:5px;
+    white-space:nowrap;
+  }
+
+  @media(max-width:360px) {
+    .mp-portal-grid {
+      gap:6px;
+    }
+    .mp-portal-card {
+      padding:9px 5px;
+      gap:6px;
+    }
+    .mp-portal-icon {
+      width:35px;
+      height:35px;
+      font-size:20px;
+    }
+    .mp-portal-name {
+      font-size:11px;
+    }
+  }
+  </style>
+
+  <div class="mp-portal-area">
+
+    <!-- Government Portals -->
+    <div class="mp-section-title">
+      🏛️ महत्वपूर्ण सरकारी पोर्टल
+    </div>
+
+    <div class="mp-section-subtitle">
+      मध्यप्रदेश स्कूल शिक्षा विभाग के महत्वपूर्ण पोर्टल
+    </div>
+
+    <div class="mp-portal-grid">
+
+      <a class="mp-portal-card"
+        href="https://educationportal3.in/"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e8f0ff;">🏛️</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">Education Portal 3.0</span>
+          <span class="mp-portal-desc">मुख्य पोर्टल एवं लॉगिन</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://sederp.educationportal3.in/"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e5f5ff;">🎓</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">Sederp Portal</span>
+          <span class="mp-portal-desc">शिक्षा पोर्टल 3.0</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://gfms.educationportal3.in/"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#f0eaff;">👨‍🏫</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">GFMS Portal</span>
+          <span class="mp-portal-desc">अतिथि शिक्षक पोर्टल</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://auth.udiseplus.gov.in/login?response_type=code&client_id=udise-modules&scope=read%20user_info&redirect_uri=https://sdms.udiseplus.gov.in/udise-modules-service/code/auth-server&state=6b3de126-8915-4143-8203-423d81f93724&code_challenge=pFAwi3_RBxHFj5S0GooId-kvZEb0BXkCeXrYjHJyeyU&code_challenge_method=S256&loginTxnId=5bba1c0b-ca22-4d0b-b482-aeda608b794e"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#fff1df;">📊</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">UDISE+ Portal</span>
+          <span class="mp-portal-desc">कॉमन मॉड्यूल लॉगिन</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://www.rskmp.in/"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e4f8ed;">🏫</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">RSKMP</span>
+          <span class="mp-portal-desc">राज्य शिक्षा केंद्र</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://www.mptreasury.gov.in/IFMS/login.jsp"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e4f5fa;">💰</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">MP Treasury</span>
+          <span class="mp-portal-desc">IFMS पोर्टल</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://pmums.in"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e8f5e9;">🏫</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">PMUMS पोर्टल</span>
+          <span class="mp-portal-desc">शिक्षक अथवा कर्मचारी के आकस्मिक निधन उपरांत सहयोग करने हेतु</span>
+        </div>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://www.vimarsh.mp.gov.in/"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#fff0e8;">📚</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">Vimarsh Portal</span>
+          <span class="mp-portal-desc">विमर्श पोर्टल</span>
+        </div>
+      </a>
+
+    </div>
+
+    <hr class="mp-portal-divider">
+
+    <!-- Mobile Apps -->
+    <div class="mp-section-title">
+      📱 महत्वपूर्ण मोबाइल ऐप
+    </div>
+
+    <div class="mp-section-subtitle">
+      शिक्षक एवं विद्यालय उपयोगी Android Applications
+    </div>
+
+    <div class="mp-portal-grid">
+
+      <a class="mp-portal-card"
+        href="https://play.google.com/store/apps/details?id=co.median.android.jrejze"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e8f0ff;">📱</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">हमारे शिक्षक ऐप</span>
+          <span class="mp-portal-desc">hamare shikshak app</span>
+        </div>
+        <span class="mp-app-badge">APP</span>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://play.google.com/store/apps/details?id=com.dscs.app"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#f0eaff;">🧩</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">प्रशस्त ऐप</span>
+          <span class="mp-portal-desc">PRASHAST</span>
+        </div>
+        <span class="mp-app-badge">APP</span>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://play.google.com/store/apps/details?id=com.diksha.lms"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e5f7ed;">📖</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">DIKSHA Course</span>
+          <span class="mp-portal-desc">ऑनलाइन प्रशिक्षण</span>
+        </div>
+        <span class="mp-app-badge">APP</span>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://play.google.com/store/apps/details?id=in.gov.diksha.app"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#fff1df;">🎓</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">DIKSHA App</span>
+          <span class="mp-portal-desc">डिजिटल शिक्षा</span>
+        </div>
+        <span class="mp-app-badge">APP</span>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://play.google.com/store/apps/details?id=com.moe.shvr"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e5f5ff;">🏫</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">SHVR App</span>
+          <span class="mp-portal-desc">शैक्षणिक ऐप</span>
+        </div>
+        <span class="mp-app-badge">APP</span>
+      </a>
+
+      <a class="mp-portal-card"
+        href="https://play.google.com/store/apps/details?id=com.ecoclub.app"
+        target="_blank" rel="noopener noreferrer">
+        <div class="mp-portal-icon" style="background:#e4f8e8;">🌱</div>
+        <div class="mp-portal-info">
+          <span class="mp-portal-name">Eco Club App</span>
+          <span class="mp-portal-desc">पर्यावरण गतिविधियाँ</span>
+        </div>
+        <span class="mp-app-badge">APP</span>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- End MP Portals and Apps -->
+
+  <!-- Service Worker -->
+  <script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("/sw.js")
+        .then((registration) => {
+          console.log("PWA Service Worker सक्रिय:", registration.scope);
+        })
+        .catch((error) => {
+          console.error("Service Worker Error:", error);
+        });
+    });
+  }
+  </script>
+
+  {% include footer.html %}
+
+</body>
+</html>
