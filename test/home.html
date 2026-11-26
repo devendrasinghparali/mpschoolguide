@@ -16,16 +16,19 @@ title: MP School Guide
 
   {% include header.html %}
 
+  <!-- html2canvas (बॉक्स की इमेज बनाने के लिए) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
   <!-- सूचना बॉक्स -->
-  <div style="
+  <div id="noticeBox" style="
     display:block;
-    margin:30px 15px;
+    margin:30px 15px 12px;
     max-width:550px;
     width:calc(100% - 30px);
     background-color:#ffffff;
     border:2px solid #ff6600;
     border-radius:12px;
-    padding:10px;
+    padding:12px 12px 30px;
     box-shadow:0 6px 12px rgba(0,0,0,0.15);
     font-family:sans-serif;
     position:relative;
@@ -43,11 +46,10 @@ title: MP School Guide
       width:280px;
       height:280px;
       opacity:0.15;
-      filter:blur(2px);
       z-index:1;
       pointer-events:none;
     ">
-      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+      <img crossorigin="anonymous" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
       style="width:100%;height:100%;object-fit:contain;">
     </div>
 
@@ -64,7 +66,7 @@ title: MP School Guide
       ">
         <tr>
           <td style="text-align:left;vertical-align:middle;width:60px;">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+            <img crossorigin="anonymous" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
             style="height:45px;width:auto;object-fit:contain;">
           </td>
 
@@ -79,7 +81,7 @@ title: MP School Guide
           </td>
 
           <td style="text-align:right;vertical-align:middle;width:60px;">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
+            <img crossorigin="anonymous" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxl6HiJKglDshHsW3vl_IuJ5qxAp49w8axOPqA9FLWCi6SFCyKOc4z8cMZMPIw2eAkCmhXnNyJEY_WJYVkec0JZi9rZQHI6RIrTUKhweJJilt1eraSIm7usrGqH0b4hNOJGP-DOGZ7x9E-duSftgPGuKzoYOK7i3vb8T3-idlO2m-VpxIpvJnRnc5o_-8/s1024/1000075021.png"
             style="height:45px;width:auto;object-fit:contain;">
           </td>
         </tr>
@@ -97,13 +99,15 @@ title: MP School Guide
         सूचना लोड हो रही है...
       </div>
 
-      <!-- Dynamic सूचना विवरण -->
+      <!-- Dynamic सूचना विवरण (बोल्ड) -->
       <div id="noticeDescription" style="
         font-size:15px;
-        line-height:1.7;
+        font-weight:bold;
+        line-height:1.9;
         color:#2d3748;
         text-align:justify;
-        margin-bottom:15px;
+        margin-bottom:25px;
+        padding-bottom:10px;
         white-space:pre-line;
         overflow-wrap:anywhere;
       ">
@@ -114,22 +118,49 @@ title: MP School Guide
       <div style="
         margin-top:20px;
         border-top:2px dashed #ff6600;
-        padding-top:10px;
+        padding-top:12px;
         text-align:center;
         font-size:14px;
         color:#4a5568;
         font-weight:bold;
+        line-height:1.8;
       ">
-        ✨ उपयोगी सूचना को साथियों के साथ शेयर करें ✨
+        ✨ उपयोगी सूचना को साथियों के साथ शेयर करें ✨<br>
+        <span style="color:#ff6600;">mpschoolguide.in</span>
       </div>
 
     </div>
   </div>
 
-  <!-- Google Sheets से सूचना प्राप्त करें -->
+  <!-- व्हाट्सएप शेयर बटन -->
+  <div style="
+    max-width:550px;
+    width:calc(100% - 30px);
+    margin:0 15px 25px;
+    box-sizing:border-box;
+  ">
+    <button id="waShareBtn" type="button" style="
+      width:100%;
+      background:#25D366;
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      padding:13px 10px;
+      font-size:16px;
+      font-weight:bold;
+      font-family:sans-serif;
+      cursor:pointer;
+      box-shadow:0 3px 8px rgba(0,0,0,0.15);
+    ">
+      📤 व्हाट्सएप पर शेयर करें
+    </button>
+  </div>
+
+  <!-- Google Sheets से सूचना प्राप्त करें + शेयर -->
   <script>
   (function () {
     const API_URL = "https://script.google.com/macros/s/AKfycbwwXxC6cWgL1iua1ZK2xoCaIf2YoO9987jaASsD-5jbT-tJCaHHOIeibhvje6mM8DUn8Q/exec";
+    const SHARE_TEXT = "उपयोगी सूचना के लिए विज़िट करें mpschoolguide.in";
 
     const titleBox = document.getElementById("noticeTitle");
     const descriptionBox = document.getElementById("noticeDescription");
@@ -156,6 +187,48 @@ title: MP School Guide
     };
 
     document.body.appendChild(script);
+
+    // ---- व्हाट्सएप पर इमेज शेयर ----
+    const btn = document.getElementById("waShareBtn");
+    const btnText = btn.innerHTML;
+
+    btn.addEventListener("click", async function () {
+      btn.disabled = true;
+      btn.textContent = "इमेज बन रही है...";
+
+      try {
+        const canvas = await html2canvas(document.getElementById("noticeBox"), {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff"
+        });
+
+        const blob = await new Promise(function (resolve) {
+          canvas.toBlob(resolve, "image/png");
+        });
+
+        const file = new File([blob], "mp-school-guide-suchna.png", { type: "image/png" });
+
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file], text: SHARE_TEXT });
+        } else {
+          // पुराने ब्राउज़र के लिए: इमेज डाउनलोड + व्हाट्सएप टेक्स्ट
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "mp-school-guide-suchna.png";
+          a.click();
+          alert("इमेज डाउनलोड हो गई है। अब व्हाट्सएप में उसे अटैच करके भेजें।");
+          window.open("https://wa.me/?text=" + encodeURIComponent(SHARE_TEXT), "_blank");
+        }
+      } catch (e) {
+        if (e.name !== "AbortError") {
+          alert("इमेज नहीं बन सकी, कृपया पुनः प्रयास करें।");
+        }
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = btnText;
+      }
+    });
   })();
   </script>
 
@@ -448,16 +521,6 @@ title: MP School Guide
         <div class="mp-portal-info">
           <span class="mp-portal-name">RSKMP</span>
           <span class="mp-portal-desc">राज्य शिक्षा केंद्र</span>
-        </div>
-      </a>
-
-      <a class="mp-portal-card"
-        href="https://www.mptreasury.gov.in/IFMS/login.jsp"
-        target="_blank" rel="noopener noreferrer">
-        <div class="mp-portal-icon" style="background:#e4f5fa;">💰</div>
-        <div class="mp-portal-info">
-          <span class="mp-portal-name">MP Treasury</span>
-          <span class="mp-portal-desc">IFMS पोर्टल</span>
         </div>
       </a>
 
