@@ -11,4 +11,11 @@ window.MPSG_AMAZON_PRODUCTS = [
     url: "https://link.amazon/B0hEbXOwC",
     category: "उपयोगी उत्पाद"
   }
+    {
+    name: "Advanced English Vocabulary Sound Book for Kids 2-6 Years | 470+ Sounds, 13 Themes |",
+    description: "470+ REAL WORD SOUNDS: Press & hear correct pronunciation instantly — builds strong vocabulary and listening skills from age 2",
+    price: "999",
+    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgx6NldY-fzVHxkk42HrJOd4qlsQxoa_lifD0Lykrlj-iAVjwzwNtzKWI1o-Qt8zn9Z8QjCfZt0Pp9G-Rn_STsveSRCy3HFRSZVle3o5yzROQ91qeZZRIvXxSXZHr0RbB4sR1eDYMfSi1WmMJZpdeCykMWtGZub8s6py_eTtfb4Qdl5nxd2-_B7FPe2Kp8/s1200/1000133131.jpg",
+    category: "उपयोगी उत्पाद"
+  }
 ];
